@@ -18,6 +18,11 @@ const { team } = Astro.props;
 
 <Layout title={team.name}>
   <section class="section team-hero">
+    <div class="container breadcrumb">
+      <a href="/psv-duesseldorf-website/fussball/">Fußball</a>
+      <span>/</span>
+      <span>{team.name}</span>
+    </div>
     <div class="container">
       <div class="hero-labels">
         <p class="eyebrow">{team.category}</p>
@@ -179,6 +184,25 @@ const { team } = Astro.props;
     font-size: 0.82rem;
     font-weight: 900;
   }
+  .breadcrumb {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .breadcrumb a {
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
 </style>
+
 
 
