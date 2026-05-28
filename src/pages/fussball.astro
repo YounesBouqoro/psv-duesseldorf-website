@@ -105,6 +105,46 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend");
       </div>
     </div>
   </section>
+  <section class="section football-process">
+    <div class="container process-grid">
+      <article class="process-card">
+        <p class="eyebrow">Einstieg</p>
+        <h2>Probetraining</h2>
+        <p>
+          Interessierte Spielerinnen und Spieler können über die Fußball-Probetrainingsseite
+          eine strukturierte Anfrage stellen. So landen Name, Jahrgang und bisherige Erfahrung
+          direkt im richtigen Kontext.
+        </p>
+        <a class="text-link" href="/psv-duesseldorf-website/fussball/probetraining/">
+          Zum Fußball-Probetraining →
+        </a>
+      </article>
+
+      <article class="process-card">
+        <p class="eyebrow">Mitgliedschaft</p>
+        <h2>Anmeldung</h2>
+        <p>
+          Nach einem erfolgreichen Probetraining folgt die offizielle Anmeldung über die
+          Vereinsunterlagen. Die finalen Formulare werden vor Livegang noch geprüft und sauber verlinkt.
+        </p>
+        <a class="text-link" href="/psv-duesseldorf-website/mitglied-werden/">
+          Mitglied werden →
+        </a>
+      </article>
+
+      <article class="process-card">
+        <p class="eyebrow">Struktur</p>
+        <h2>Mannschaften</h2>
+        <p>
+          Die Mannschaften werden zentral über ein Datenmodell gepflegt. Dadurch bleiben
+          Übersicht, Teamseiten und Sitemap langfristig konsistent.
+        </p>
+        <a class="text-link" href="/psv-duesseldorf-website/fussball/">
+          Mannschaften ansehen →
+        </a>
+      </article>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -257,4 +297,40 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend");
       grid-template-columns: 1fr;
     }
   }
+  .football-process {
+    background: #ffffff;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .process-card {
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .process-card p {
+    color: var(--muted);
+  }
+
+  .text-link {
+    display: inline-flex;
+    margin-top: 22px;
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  @media (max-width: 980px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
+
