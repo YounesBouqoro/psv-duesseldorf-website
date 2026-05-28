@@ -3,14 +3,79 @@ import Layout from "../components/layout/Layout.astro";
 ---
 
 <Layout title="Seite nicht gefunden">
-  <section class="section">
-    <div class="container">
-      <h1>Seite nicht gefunden</h1>
-      <p class="muted">Diese Seite existiert nicht.</p>
-      <div class="card">
-        <p>Bitte nutzen Sie die Navigation.</p>
+  <section class="section error-section">
+    <div class="container error-card">
+      <p class="eyebrow">404</p>
+      <h1>Diese Seite wurde nicht gefunden.</h1>
+      <p>
+        Die angeforderte Seite existiert nicht oder wurde im Rahmen des Website-Relaunches verschoben.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="/psv-duesseldorf-website/">Zur Startseite</a>
+        <a class="button secondary" href="/psv-duesseldorf-website/sportarten/">Sportarten ansehen</a>
       </div>
     </div>
   </section>
 </Layout>
 
+<style>
+  .error-section {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .error-card {
+    max-width: 820px;
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  p {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .secondary {
+    border: 1px solid var(--accent);
+    color: var(--accent-strong);
+    background: #ffffff;
+  }
+</style>
