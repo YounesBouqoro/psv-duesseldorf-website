@@ -1,4 +1,5 @@
 ﻿import { getCollection } from "astro:content";
+import { footballTeams } from "../data/footballTeams";
 
 export async function GET() {
   const siteUrl = "https://younesbouqoro.github.io/psv-duesseldorf-website";
@@ -7,6 +8,7 @@ export async function GET() {
     "",
     "verein",
     "sportarten",
+    "fussball",
     "probetraining",
     "mitglied-werden",
     "downloads",
@@ -22,7 +24,14 @@ export async function GET() {
 
   const urls = [
     ...staticPages.map((page) => `${siteUrl}/${page}`.replace(/\/$/, "")),
-    ...sportarten.map((sport) => `${siteUrl}/sportarten/${sport.id}`)
+
+    ...sportarten.map(
+      (sport) => `${siteUrl}/sportarten/${sport.id}`
+    ),
+
+    ...footballTeams.map(
+      (team) => `${siteUrl}/fussball/teams/${team.slug}`
+    )
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

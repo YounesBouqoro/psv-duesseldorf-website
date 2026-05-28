@@ -4,34 +4,47 @@
       "label": "Verein",
       "href": "/verein/"
     },
+
     {
       "label": "Sportarten",
       "href": "/sportarten/"
     },
+
+    {
+      "label": "Fußball",
+      "href": "/fussball/"
+    },
+
     {
       "label": "Probetraining",
       "href": "/probetraining/"
     },
+
     {
       "label": "Mitglied werden",
       "href": "/mitglied-werden/"
     },
+
     {
       "label": "Downloads",
       "href": "/downloads/"
     },
+
     {
       "label": "Partner",
       "href": "/partner/"
     },
+
     {
       "label": "Sponsoring",
       "href": "/sponsoring/"
     },
+
     {
       "label": "Kinderschutz",
       "href": "/kinderschutz/"
     },
+
     {
       "label": "Kontakt",
       "href": "/kontakt/"
