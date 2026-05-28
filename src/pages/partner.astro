@@ -1,16 +1,142 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+
+const partnerTypes = [
+  {
+    title: "Sportliche Partner",
+    text: "Kooperationen, die den Trainings- und Sportbetrieb unterstützen."
+  },
+  {
+    title: "Ausstattung & Services",
+    text: "Partner für Ausrüstung, Dienstleistungen oder operative Unterstützung."
+  },
+  {
+    title: "Lokale Kooperationen",
+    text: "Regionale Partner mit Bezug zum Vereinsumfeld in Düsseldorf."
+  }
+];
 ---
 
 <Layout title="Partner">
-  <section class="section">
+  <section class="section page-hero">
     <div class="container">
-      <h1>Partner</h1>
-      <p class="muted">UnterstÃ¼tzer und Partner des Vereins.</p>
-      <div class="card">
-        <p>Hier werden Partner und Sponsoren sichtbar gemacht.</p>
+      <p class="eyebrow">Netzwerk</p>
+      <h1>Partner des PSV Düsseldorf</h1>
+      <p class="intro">
+        Partner stärken den Verein durch Angebote, Kooperationen und Unterstützung im Vereinsalltag.
+        Die neue Website schafft dafür eine klare und professionelle Darstellung.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container partner-grid">
+      {partnerTypes.map((item) => (
+        <article class="partner-card">
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container cta-card">
+      <div>
+        <p class="eyebrow">Kooperation</p>
+        <h2>Partner werden?</h2>
+        <p>
+          Unternehmen und Organisationen, die mit dem PSV Düsseldorf zusammenarbeiten möchten,
+          können über die Kontaktseite eine Anfrage stellen.
+        </p>
       </div>
+
+      <a class="button primary" href="/psv-duesseldorf-website/kontakt/">Kontakt aufnehmen</a>
     </div>
   </section>
 </Layout>
 
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .partner-card,
+  .cta-card {
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .partner-card p,
+  .cta-card p {
+    color: var(--muted);
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .cta-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  @media (max-width: 900px) {
+    .partner-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+</style>
