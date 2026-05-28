@@ -41,7 +41,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 10,
     acceptsTrial: true,
     description: "Die 1. Mannschaft bildet den leistungsorientierten Seniorenbereich des PSV Düsseldorf.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -68,7 +68,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 20,
     acceptsTrial: true,
     description: "Die 2. Mannschaft ergänzt den Seniorenbereich und bietet Spielern eine weitere Perspektive im Herrenfußball.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -94,7 +94,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 30,
     acceptsTrial: true,
     description: "Die Alten Herren stehen für Fußball, Gemeinschaft und Vereinsleben im Erwachsenenbereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -121,7 +121,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 100,
     acceptsTrial: true,
     description: "Die A1 ist der älteste Jugendbereich und bereitet Spieler auf den Übergang in den Seniorenfußball vor.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -148,7 +148,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 110,
     acceptsTrial: true,
     description: "Die B1 richtet sich an Spieler der U17 und verbindet Ausbildung, Wettkampf und persönliche Entwicklung.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -174,7 +174,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 120,
     acceptsTrial: true,
     description: "Die B2 erweitert das Angebot im U17-Bereich und schafft zusätzliche Entwicklungsmöglichkeiten.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -201,7 +201,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 130,
     acceptsTrial: true,
     description: "Die C1 steht für leistungsorientierte Weiterentwicklung im U15-Bereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -227,7 +227,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 140,
     acceptsTrial: true,
     description: "Die C2 bietet Spielern im U15-Bereich eine strukturierte Mannschaftsumgebung.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -253,7 +253,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 150,
     acceptsTrial: true,
     description: "Die C3 ergänzt den C-Jugendbereich und schafft weitere Spiel- und Trainingsmöglichkeiten.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -280,7 +280,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 160,
     acceptsTrial: true,
     description: "Die D1 begleitet Spieler im U13-Bereich in einer wichtigen Entwicklungsphase.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -306,7 +306,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 170,
     acceptsTrial: true,
     description: "Die D2 bietet zusätzliche Perspektiven und Spielpraxis im U13-Bereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -332,7 +332,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 180,
     acceptsTrial: true,
     description: "Die D3 ergänzt den D-Jugendbereich und ermöglicht mehr Kindern regelmäßigen Vereinsfußball.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -359,7 +359,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 190,
     acceptsTrial: true,
     description: "Die E1 fördert junge Spieler im U11-Bereich mit Fokus auf Technik, Bewegung und Teamgeist.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -385,7 +385,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 200,
     acceptsTrial: true,
     description: "Die E2 schafft weitere Entwicklungs- und Spielmöglichkeiten im U11-Bereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -411,7 +411,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 210,
     acceptsTrial: true,
     description: "Die E3 ergänzt den E-Jugendbereich mit altersgerechtem Training und Spielpraxis.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -437,7 +437,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 220,
     acceptsTrial: true,
     description: "Die E4 erweitert das Angebot für junge Spieler im E-Jugendbereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -464,7 +464,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 230,
     acceptsTrial: true,
     description: "Die F1 steht für kindgerechten Fußball im U9-Bereich mit vielen Ballkontakten.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -490,7 +490,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 240,
     acceptsTrial: true,
     description: "Die F2 bietet Kindern im U9-Bereich eine weitere Mannschaftsumgebung.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -516,7 +516,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 250,
     acceptsTrial: true,
     description: "Die F3 ergänzt die F-Jugend mit spielerischer Förderung und Teamgefühl.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -542,7 +542,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 260,
     acceptsTrial: true,
     description: "Die F4 schafft zusätzliche Kapazität für den Kinderfußball im U9-Bereich.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -569,7 +569,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 270,
     acceptsTrial: true,
     description: "Die G1 begleitet Kinder bei den ersten Schritten im Vereinsfußball.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -595,7 +595,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 280,
     acceptsTrial: true,
     description: "Die G2 bietet weiteren Kindern im U7-Bereich einen Einstieg in den Fußball.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
@@ -621,7 +621,7 @@ export const footballTeams: FootballTeam[] = [
     priority: 290,
     acceptsTrial: true,
     description: "Die G3 ergänzt den jüngsten Nachwuchsbereich des PSV Düsseldorf.",
-    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.webp",
+    coverImage: "/psv-duesseldorf-website/images/fussball/teams/platzhalter-team.svg",
     gallery: [],
 
     dataChecklist: {
