@@ -114,6 +114,9 @@ const youthGroups = [
             <div class="team-top">
               <span class="badge">{team.ageGroup}</span>
               <span class="status-badge">Daten prüfen</span>
+              {team.coverImage && (
+                <span class="image-badge">Bild vorbereitet</span>
+              )}
             </div>
 
             <h3>{team.name}</h3>
@@ -156,6 +159,9 @@ const youthGroups = [
                   <div class="team-top">
                     <span class="badge">{team.ageGroup}</span>
                     <span class="status-badge">Daten prüfen</span>
+              {team.coverImage && (
+                <span class="image-badge">Bild vorbereitet</span>
+              )}
                   </div>
 
                   <h3>{team.name}</h3>
@@ -366,6 +372,11 @@ const youthGroups = [
 
   .badge,
   .status-badge {
+    background: rgba(127, 194, 65, 0.12);
+    color: var(--accent-strong);
+  }
+
+  .image-badge {
     display: inline-flex;
     align-items: center;
     min-height: 32px;
@@ -381,6 +392,11 @@ const youthGroups = [
   }
 
   .status-badge {
+    background: rgba(127, 194, 65, 0.12);
+    color: var(--accent-strong);
+  }
+
+  .image-badge {
     background: #fff7db;
     color: #8a6500;
   }
