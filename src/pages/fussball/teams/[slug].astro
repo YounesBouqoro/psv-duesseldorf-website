@@ -1,6 +1,8 @@
 ﻿---
 import Layout from "../../../components/layout/Layout.astro";
 import { footballTeams } from "../../../data/footballTeams";
+import { footballCoaches } from "../../../data/footballCoaches";
+import { footballTrainingSchedule } from "../../../data/footballTrainingSchedule";
 
 export async function getStaticPaths() {
   return footballTeams.map((team) => ({
@@ -15,7 +17,51 @@ export async function getStaticPaths() {
 
 const { team } = Astro.props;
 
+const teamCoaches = footballCoaches.filter((coach) => coach.teams.includes(team.slug));
+const teamTrainingSlots = footballTrainingSchedule.filter((slot) => slot.teamSlug === team.slug);
+
 const relatedTeams = footballTeams
+' `
+| Set-Content -LiteralPath "src\pages\fussball\teams\[slug].astro" -Encoding UTF8
+
+(Get-Content -LiteralPath "src\pages\fussball\teams\[slug].astro") `
+-replace '<section class="section light-section">\s*<div class="container split-grid">', @'
+<section class="section light-section">
+    <div class="container split-grid">
+      <article class="content-card">
+        <p class="eyebrow">Trainingsmodell</p>
+        <h2>Strukturierte Trainingszeiten</h2>
+
+        {teamTrainingSlots.length > 0 ? (
+          <ul>
+            {teamTrainingSlots.map((slot) => (
+              <li>{slot.weekday}: {slot.startTime} bis {slot.endTime} · {slot.location}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>Für dieses Team sind noch keine final geprüften Trainingszeiten hinterlegt.</p>
+        )}
+      </article>
+
+      <article class="content-card">
+        <p class="eyebrow">Trainermodell</p>
+        <h2>Strukturierte Trainerdaten</h2>
+
+        {teamCoaches.length > 0 ? (
+          <ul>
+            {teamCoaches.map((coach) => (
+              <li>{coach.name} · {coach.role}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>Für dieses Team sind noch keine final geprüften Trainerdaten hinterlegt.</p>
+        )}
+      </article>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
   .filter((item) => item.ageGroup === team.ageGroup && item.slug !== team.slug)
   .sort((a, b) => a.priority - b.priority);
 ---
