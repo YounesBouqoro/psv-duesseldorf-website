@@ -14,6 +14,10 @@ export async function getStaticPaths() {
 }
 
 const { team } = Astro.props;
+
+const relatedTeams = footballTeams
+  .filter((item) => item.ageGroup === team.ageGroup && item.slug !== team.slug)
+  .sort((a, b) => a.priority - b.priority);
 ---
 
 <Layout title={`${team.name} Fußball | PSV Düsseldorf`}>
@@ -23,6 +27,7 @@ const { team } = Astro.props;
       <span>/</span>
       <span>{team.name}</span>
     </div>
+
     <div class="container">
       <div class="hero-labels">
         <p class="eyebrow">{team.category}</p>
@@ -34,6 +39,16 @@ const { team } = Astro.props;
       <p class="intro">
         {team.description}
       </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="/psv-duesseldorf-website/fussball/probetraining/">
+          Probetraining anfragen
+        </a>
+
+        <a class="button secondary" href="/psv-duesseldorf-website/fussball/">
+          Alle Mannschaften
+        </a>
+      </div>
     </div>
   </section>
 
@@ -73,22 +88,41 @@ const { team } = Astro.props;
       <article class="content-card">
         <p class="eyebrow">Probetraining</p>
 
-        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Probetraining anfragen"}</h2>
+        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Kontakt aufnehmen"}</h2>
 
         <p>
-          Für Anfragen zum Probetraining oder zur Mannschaft bitte direkt Probetraining anfragen.
+          Für Anfragen zum Probetraining oder zur Mannschaft bitte die Fußball-Probetrainingsseite nutzen.
         </p>
 
-        <a
-          class="button primary"
-          href={`/psv-duesseldorf-website/fussball/probetraining/`}
-        >
+        <a class="button primary" href="/psv-duesseldorf-website/fussball/probetraining/">
           Probetraining anfragen
         </a>
       </article>
     </div>
   </section>
-  <section class="section">
+
+  {relatedTeams.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Weitere Teams</p>
+          <h2>Weitere Mannschaften in {team.ageGroup}</h2>
+        </div>
+
+        <div class="related-grid">
+          {relatedTeams.map((related) => (
+            <a class="related-card" href={`/psv-duesseldorf-website/fussball/teams/${related.slug}/`}>
+              <span>{related.ageGroup}</span>
+              <strong>{related.name}</strong>
+              <p>{related.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section light-section">
     <div class="container steps-grid">
       <article class="step-card">
         <span>01</span>
@@ -124,6 +158,33 @@ const { team } = Astro.props;
       linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
   }
 
+  .breadcrumb {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .breadcrumb a {
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  .hero-labels,
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions {
+    margin-top: 30px;
+  }
+
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 900;
@@ -143,63 +204,6 @@ const { team } = Astro.props;
     font-size: 1.15rem;
   }
 
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .info-card,
-  .content-card {
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .light-section {
-    background: var(--surface);
-  }
-
-  .split-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 0 22px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 900;
-    margin-top: 24px;
-  }
-
-  ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 980px) {
-    .info-grid,
-    .split-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .hero-labels {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
   .status-badge {
     display: inline-flex;
     align-items: center;
@@ -211,31 +215,51 @@ const { team } = Astro.props;
     font-size: 0.82rem;
     font-weight: 900;
   }
-  .breadcrumb {
-    display: flex;
-    gap: 10px;
+
+  .button {
+    display: inline-flex;
     align-items: center;
-    margin-bottom: 24px;
-    color: var(--muted);
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .breadcrumb a {
-    color: var(--accent-strong);
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
     text-decoration: none;
+    font-weight: 900;
   }
 
-  .breadcrumb a:hover {
-    text-decoration: underline;
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
   }
-  .steps-grid {
+
+  .secondary {
+    border: 1px solid var(--accent);
+    background: #ffffff;
+    color: var(--accent-strong);
+  }
+
+  .info-grid,
+  .split-grid,
+  .steps-grid,
+  .related-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
 
-  .step-card {
+  .info-grid,
+  .steps-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .split-grid,
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .info-card,
+  .content-card,
+  .step-card,
+  .related-card {
     padding: 30px;
     border-radius: var(--radius);
     border: 1px solid var(--border);
@@ -243,26 +267,64 @@ const { team } = Astro.props;
     box-shadow: var(--shadow);
   }
 
+  .light-section {
+    background: var(--surface);
+  }
+
+  .section-head {
+    margin-bottom: 30px;
+  }
+
+  .related-card {
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .related-card span,
   .step-card span {
     display: inline-flex;
     margin-bottom: 18px;
     color: var(--accent-strong);
-    font-size: 1.8rem;
     font-weight: 900;
   }
 
-  .step-card p {
+  .related-card span {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(127, 194, 65, 0.12);
+  }
+
+  .step-card span {
+    font-size: 1.8rem;
+  }
+
+  .info-card p,
+  .content-card p,
+  .content-card li,
+  .step-card p,
+  .related-card p {
     color: var(--muted);
   }
 
+  ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+  }
+
   @media (max-width: 980px) {
-    .steps-grid {
+    .info-grid,
+    .split-grid,
+    .steps-grid,
+    .related-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
-
-
-
-
-
