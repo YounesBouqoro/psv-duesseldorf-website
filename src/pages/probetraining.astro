@@ -1,32 +1,157 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+
+const steps = [
+  {
+    title: "Sportart auswählen",
+    text: "Interessierte wählen zuerst die passende Sportart oder Abteilung aus."
+  },
+  {
+    title: "Anfrage stellen",
+    text: "Die Anfrage wird über den zentralen Kontaktweg oder direkt über die zuständige Abteilung gestellt."
+  },
+  {
+    title: "Rückmeldung erhalten",
+    text: "Die zuständige Ansprechperson klärt Trainingszeiten, Kapazitäten und nächste Schritte."
+  }
+];
+
+const notes = [
+  "Ein Probetraining ist je nach Sportart und Kapazität unterschiedlich geregelt.",
+  "Einige Abteilungen haben feste Trainingsgruppen oder begrenzte Plätze.",
+  "Für Kinder- und Jugendangebote können zusätzliche Informationen notwendig sein."
+];
 ---
 
 <Layout title="Probetraining">
-  <section class="section">
+  <section class="section page-hero">
     <div class="container">
-      <p class="eyebrow">Einstieg</p>
+      <p class="eyebrow">Einstieg in den Verein</p>
       <h1>Probetraining beim PSV Düsseldorf</h1>
-      <p class="muted">
-        Ein Probetraining soll Interessierten den einfachen Einstieg in die passende Sportart ermöglichen.
+      <p class="intro">
+        Ein Probetraining ist der beste Einstieg, um Sportart, Trainerteam und Vereinsumfeld kennenzulernen.
+        Die neue Website bündelt dafür künftig alle relevanten Kontaktwege.
       </p>
+      <a class="button primary" href="/psv-duesseldorf-website/kontakt/">Kontakt aufnehmen</a>
+    </div>
+  </section>
 
-      <div class="card">
-        <h2>So soll der Ablauf funktionieren</h2>
-        <p>
-          Interessierte wählen künftig eine Sportart aus, stellen eine Anfrage und erhalten anschließend die passenden Informationen
-          zu Trainingszeiten, Standort und Ansprechpartnern. Konkrete Trainingszeiten werden ergänzt, sobald sie offiziell bestätigt sind.
-        </p>
+  <section class="section">
+    <div class="container process-grid">
+      {steps.map((step, index) => (
+        <article class="process-card">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h2>{step.title}</h2>
+          <p>{step.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container info-grid">
+      <div>
+        <p class="eyebrow">Wichtig</p>
+        <h2>Hinweise zum Probetraining</h2>
+      </div>
+
+      <div class="note-list">
+        {notes.map((note) => (
+          <div class="note-card">{note}</div>
+        ))}
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
+  .page-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .process-card,
+  .note-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .process-card span {
+    color: var(--accent-strong);
+    font-weight: 900;
+  }
+
+  .process-card p,
+  .note-card {
+    color: var(--muted);
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .note-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .process-grid,
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
