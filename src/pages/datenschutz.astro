@@ -3,14 +3,82 @@ import Layout from "../components/layout/Layout.astro";
 ---
 
 <Layout title="Datenschutz">
-  <section class="section">
+  <section class="section page-hero">
     <div class="container">
+      <p class="eyebrow">Rechtliches</p>
       <h1>Datenschutz</h1>
-      <p class="muted">Datenschutzhinweise.</p>
-      <div class="card">
-        <p>Bitte rechtlich prÃ¼fen und ergÃ¤nzen.</p>
-      </div>
+      <p class="intro">
+        Die Datenschutzerklärung wird vor dem finalen Launch aktualisiert und auf die neue technische Website-Struktur angepasst.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-grid">
+      <article class="legal-card">
+        <h2>Verantwortlichkeit</h2>
+        <p>
+          Die verantwortliche Stelle und Kontaktdaten werden nach finaler Prüfung ergänzt.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2>Kontaktformular & Kommunikation</h2>
+        <p>
+          Sobald Formulare oder externe Dienste genutzt werden, müssen diese sauber in der Datenschutzerklärung berücksichtigt werden.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2>Technische Dienste</h2>
+        <p>
+          Hosting, Analytics, Cookies und eingebundene Drittanbieter werden vor Veröffentlichung geprüft und dokumentiert.
+        </p>
+      </article>
     </div>
   </section>
 </Layout>
 
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro,
+  .legal-card p {
+    color: var(--muted);
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .legal-card {
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  @media (max-width: 900px) {
+    .legal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

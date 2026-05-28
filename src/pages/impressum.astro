@@ -3,14 +3,68 @@ import Layout from "../components/layout/Layout.astro";
 ---
 
 <Layout title="Impressum">
-  <section class="section">
+  <section class="section page-hero">
     <div class="container">
+      <p class="eyebrow">Rechtliches</p>
       <h1>Impressum</h1>
-      <p class="muted">Rechtliche Angaben.</p>
-      <div class="card">
-        <p>Bitte rechtlich prÃ¼fen und ergÃ¤nzen.</p>
+      <p class="intro">
+        Die Angaben im Impressum müssen vor dem finalen Launch mit den offiziellen Vereinsdaten abgeglichen und freigegeben werden.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-card">
+      <h2>Polizei-Sport-Verein Düsseldorf e.V.</h2>
+      <p>
+        Die vollständigen Pflichtangaben werden hier nach redaktioneller und rechtlicher Prüfung veröffentlicht.
+      </p>
+
+      <div class="notice">
+        <strong>Launch-Hinweis:</strong>
+        Vereinsregister, vertretungsberechtigter Vorstand, Anschrift, Kontaktangaben und Verantwortlichkeiten müssen final bestätigt werden.
       </div>
     </div>
   </section>
 </Layout>
 
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro,
+  .legal-card p {
+    color: var(--muted);
+  }
+
+  .legal-card {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .notice {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 20px;
+    background: #f3f8ef;
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+</style>
