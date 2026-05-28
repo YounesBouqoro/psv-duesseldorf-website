@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://younesbouqoro.github.io/psv-duesseldorf-website/sitemap.xml
