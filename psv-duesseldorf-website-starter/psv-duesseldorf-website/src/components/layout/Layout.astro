@@ -1,0 +1,31 @@
+---
+import '../../styles/global.css';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Polizei-Sport-Verein Düsseldorf e.V. – ein Verein, viele Sportarten, eine starke Gemeinschaft.' } = Astro.props;
+const pageTitle = `${title} | PSV Düsseldorf`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/psv-duesseldorf-website/brand/logo.png" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

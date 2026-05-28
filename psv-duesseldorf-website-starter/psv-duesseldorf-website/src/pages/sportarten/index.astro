@@ -1,0 +1,26 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import SportCard from '../../components/sport/SportCard.astro';
+import { getCollection } from 'astro:content';
+
+const sportarten = await getCollection('sportarten');
+---
+
+<Layout title="Sportarten">
+  <section class="section">
+    <div class="container">
+      <h1>Sportarten</h1>
+      <p class="muted">Der PSV Düsseldorf ist ein Mehrspartenverein. Hier finden Interessierte alle Abteilungen auf einen Blick.</p>
+      <div class="grid grid-3">
+        {sportarten.map((item) => (
+          <SportCard
+            title={item.data.title}
+            description={item.data.shortDescription}
+            tags={item.data.tags}
+            href={`/psv-duesseldorf-website/sportarten/${item.slug}/`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

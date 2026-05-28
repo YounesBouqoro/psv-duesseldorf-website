@@ -1,0 +1,61 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import TrainingSchedule from '../../components/sport/TrainingSchedule.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const sportarten = await getCollection('sportarten');
+  return sportarten.map((item) => ({
+    params: { slug: item.slug },
+    props: { item }
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<Layout title={item.data.title} description={item.data.shortDescription}>
+  <section class="section">
+    <div class="container">
+      <p class="muted">Sportart</p>
+      <h1>{item.data.title}</h1>
+      <p class="muted">{item.data.shortDescription}</p>
+
+      <div class="card content">
+        <Content />
+      </div>
+
+      <h2>Trainingszeiten</h2>
+      <TrainingSchedule sessions={item.data.training} />
+
+      {item.data.contact && (
+        <>
+          <h2>Ansprechpartner</h2>
+          <div class="card">
+            <strong>{item.data.contact.name}</strong>
+            <p class="muted">{item.data.contact.role}</p>
+            {item.data.contact.email && <a href={`mailto:${item.data.contact.email}`}>{item.data.contact.email}</a>}
+          </div>
+        </>
+      )}
+
+      <div class="card cta">
+        <h2>Probetraining anfragen</h2>
+        <p class="muted">Der konkrete Anfrageweg wird im nächsten Schritt je Abteilung definiert.</p>
+        <a class="button" href="/psv-duesseldorf-website/probetraining/">Zum Probetraining</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .content,
+  .cta {
+    margin: 28px 0;
+  }
+
+  h2 {
+    margin-top: 42px;
+  }
+</style>
