@@ -13,16 +13,30 @@ const {
   description = "Polizei-Sport-Verein Düsseldorf e.V. – ein Verein, viele Sportarten, eine starke Gemeinschaft."
 } = Astro.props;
 
+const siteUrl = "https://younesbouqoro.github.io/psv-duesseldorf-website";
 const pageTitle = `${title} | PSV Düsseldorf`;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#7fc241" />
+
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/psv-duesseldorf-website/brand/logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="/psv-duesseldorf-website/brand/logo.png" />
+    <meta property="og:locale" content="de_DE" />
+
     <title>{pageTitle}</title>
   </head>
 
@@ -34,4 +48,3 @@ const pageTitle = `${title} | PSV Düsseldorf`;
     <Footer />
   </body>
 </html>
-
