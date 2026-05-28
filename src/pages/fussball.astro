@@ -42,7 +42,15 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
     </div>
   </section>
 
-  <section class="section">
+  <section class="football-anchor-bar">
+    <div class="container anchor-inner">
+      <a href="#senioren">Senioren</a>
+      <a href="#jugend">Jugend</a>
+      <a href="#einstieg">Probetraining & Anmeldung</a>
+    </div>
+  </section>
+
+  <section id="senioren" class="section">
     <div class="container">
       <div class="section-head">
         <div>
@@ -76,7 +84,7 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
     </div>
   </section>
 
-  <section class="section light-section">
+  <section id="jugend" class="section light-section">
     <div class="container">
       <div class="section-head">
         <div>
@@ -109,7 +117,7 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
       </div>
     </div>
   </section>
-  <section class="section football-process">
+  <section id="einstieg" class="section football-process">
     <div class="container process-grid">
       <article class="process-card">
         <p class="eyebrow">Einstieg</p>
@@ -370,7 +378,37 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   .mini-link:hover {
     text-decoration: underline;
   }
+  .football-anchor-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(14px);
+  }
+
+  .anchor-inner {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 14px 0;
+  }
+
+  .anchor-inner a {
+    white-space: nowrap;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .anchor-inner a:hover {
+    background: rgba(127, 194, 65, 0.16);
+  }
 </style>
+
 
 
 
