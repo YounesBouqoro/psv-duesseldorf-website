@@ -5,15 +5,26 @@ import navigation from "../../data/navigation.json";
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/psv-duesseldorf-website/">
-      <img src="/psv-duesseldorf-website/brand/logo.png" alt="PSV Düsseldorf Logo" width="44" height="44" />
+      <img src="/psv-duesseldorf-website/brand/logo.png" alt="PSV Düsseldorf Logo" width="48" height="48" />
       <span>PSV Düsseldorf</span>
     </a>
 
-    <nav aria-label="Hauptnavigation">
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
       {navigation.main.map((item) => (
         <a href={`/psv-duesseldorf-website${item.href}`}>{item.label}</a>
       ))}
     </nav>
+
+    <a class="header-cta" href="/psv-duesseldorf-website/probetraining/">Probetraining</a>
+
+    <details class="mobile-menu">
+      <summary>Menü</summary>
+      <nav aria-label="Mobile Hauptnavigation">
+        {navigation.main.map((item) => (
+          <a href={`/psv-duesseldorf-website${item.href}`}>{item.label}</a>
+        ))}
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -21,10 +32,11 @@ import navigation from "../../data/navigation.json";
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: var(--header-bg);
-    color: var(--header-text);
+    z-index: 50;
+    background: rgba(127, 194, 65, 0.96);
+    color: #ffffff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(14px);
   }
 
   .header-inner {
@@ -32,16 +44,17 @@ import navigation from "../../data/navigation.json";
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 22px;
   }
 
   .brand {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: var(--header-text);
-    font-weight: 800;
+    color: #ffffff;
+    font-weight: 900;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .brand img {
@@ -50,30 +63,95 @@ import navigation from "../../data/navigation.json";
     background: #ffffff;
   }
 
-  nav {
+  .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    flex: 1;
   }
 
-  nav a {
-    color: var(--header-text);
+  .desktop-nav a {
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 700;
+    font-size: 0.92rem;
+    font-weight: 800;
+    opacity: 0.95;
   }
 
-  nav a:hover {
+  .desktop-nav a:hover {
     text-decoration: underline;
     text-underline-offset: 6px;
   }
 
-  @media (max-width: 860px) {
-    .header-inner {
-      align-items: flex-start;
-      flex-direction: column;
-      padding-block: 14px;
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: relative;
+  }
+
+  .mobile-menu summary {
+    list-style: none;
+    cursor: pointer;
+    min-height: 42px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--accent-strong);
+    font-weight: 900;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu nav {
+    position: absolute;
+    right: 0;
+    top: 56px;
+    width: min(320px, calc(100vw - 32px));
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.18);
+  }
+
+  .mobile-menu nav a {
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: var(--text);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .mobile-menu nav a:hover {
+    background: #f3f8ef;
+    color: var(--accent-strong);
+  }
+
+  @media (max-width: 1120px) {
+    .desktop-nav,
+    .header-cta {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: block;
     }
   }
 </style>
-
