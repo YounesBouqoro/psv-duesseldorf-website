@@ -1,0 +1,43 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+---
+
+<Layout title="Startseite">
+  <section class="section hero-section">
+    <div class="container">
+      <p class="eyebrow">Polizei-Sport-Verein Düsseldorf e.V.</p>
+      <h1>Ein moderner Mehrspartenverein für Düsseldorf.</h1>
+      <p class="muted hero-text">Sportarten, Kurse, Mitgliedschaft, Sponsoring und Vereinsinformationen werden hier zentral gebündelt.</p>
+      <div class="card">
+        <p>Die neue Website-Struktur ist live. Inhalte, Bilder und Detailseiten werden im nächsten Schritt sauber ausgebaut.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 900px;
+    font-size: clamp(42px, 7vw, 88px);
+    line-height: 0.95;
+    margin: 16px 0 24px;
+  }
+
+  .hero-text {
+    max-width: 720px;
+    font-size: 1.2rem;
+  }
+</style>
