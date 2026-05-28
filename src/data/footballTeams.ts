@@ -38,7 +38,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 10,
     acceptsTrial: true,
-    description: "Die 1. Mannschaft bildet den leistungsorientierten Seniorenbereich des PSV Düsseldorf."
+    description: "Die 1. Mannschaft bildet den leistungsorientierten Seniorenbereich des PSV Düsseldorf.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "2-mannschaft",
@@ -53,7 +63,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 20,
     acceptsTrial: true,
-    description: "Die 2. Mannschaft ergänzt den Seniorenbereich und bietet Spielern eine weitere Perspektive im Herrenfußball."
+    description: "Die 2. Mannschaft ergänzt den Seniorenbereich und bietet Spielern eine weitere Perspektive im Herrenfußball.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "alte-herren",
@@ -67,7 +87,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 30,
     acceptsTrial: true,
-    description: "Die Alten Herren stehen für Fußball, Gemeinschaft und Vereinsleben im Erwachsenenbereich."
+    description: "Die Alten Herren stehen für Fußball, Gemeinschaft und Vereinsleben im Erwachsenenbereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -82,7 +112,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 100,
     acceptsTrial: true,
-    description: "Die A1 ist der älteste Jugendbereich und bereitet Spieler auf den Übergang in den Seniorenfußball vor."
+    description: "Die A1 ist der älteste Jugendbereich und bereitet Spieler auf den Übergang in den Seniorenfußball vor.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -97,7 +137,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 110,
     acceptsTrial: true,
-    description: "Die B1 richtet sich an Spieler der U17 und verbindet Ausbildung, Wettkampf und persönliche Entwicklung."
+    description: "Die B1 richtet sich an Spieler der U17 und verbindet Ausbildung, Wettkampf und persönliche Entwicklung.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "b2",
@@ -111,7 +161,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 120,
     acceptsTrial: true,
-    description: "Die B2 erweitert das Angebot im U17-Bereich und schafft zusätzliche Entwicklungsmöglichkeiten."
+    description: "Die B2 erweitert das Angebot im U17-Bereich und schafft zusätzliche Entwicklungsmöglichkeiten.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -126,7 +186,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 130,
     acceptsTrial: true,
-    description: "Die C1 steht für leistungsorientierte Weiterentwicklung im U15-Bereich."
+    description: "Die C1 steht für leistungsorientierte Weiterentwicklung im U15-Bereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "c2",
@@ -140,7 +210,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 140,
     acceptsTrial: true,
-    description: "Die C2 bietet Spielern im U15-Bereich eine strukturierte Mannschaftsumgebung."
+    description: "Die C2 bietet Spielern im U15-Bereich eine strukturierte Mannschaftsumgebung.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "c3",
@@ -154,7 +234,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 150,
     acceptsTrial: true,
-    description: "Die C3 ergänzt den C-Jugendbereich und schafft weitere Spiel- und Trainingsmöglichkeiten."
+    description: "Die C3 ergänzt den C-Jugendbereich und schafft weitere Spiel- und Trainingsmöglichkeiten.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -169,7 +259,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 160,
     acceptsTrial: true,
-    description: "Die D1 begleitet Spieler im U13-Bereich in einer wichtigen Entwicklungsphase."
+    description: "Die D1 begleitet Spieler im U13-Bereich in einer wichtigen Entwicklungsphase.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "d2",
@@ -183,7 +283,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 170,
     acceptsTrial: true,
-    description: "Die D2 bietet zusätzliche Perspektiven und Spielpraxis im U13-Bereich."
+    description: "Die D2 bietet zusätzliche Perspektiven und Spielpraxis im U13-Bereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "d3",
@@ -197,7 +307,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 180,
     acceptsTrial: true,
-    description: "Die D3 ergänzt den D-Jugendbereich und ermöglicht mehr Kindern regelmäßigen Vereinsfußball."
+    description: "Die D3 ergänzt den D-Jugendbereich und ermöglicht mehr Kindern regelmäßigen Vereinsfußball.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -212,7 +332,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 190,
     acceptsTrial: true,
-    description: "Die E1 fördert junge Spieler im U11-Bereich mit Fokus auf Technik, Bewegung und Teamgeist."
+    description: "Die E1 fördert junge Spieler im U11-Bereich mit Fokus auf Technik, Bewegung und Teamgeist.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "e2",
@@ -226,7 +356,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 200,
     acceptsTrial: true,
-    description: "Die E2 schafft weitere Entwicklungs- und Spielmöglichkeiten im U11-Bereich."
+    description: "Die E2 schafft weitere Entwicklungs- und Spielmöglichkeiten im U11-Bereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "e3",
@@ -240,7 +380,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 210,
     acceptsTrial: true,
-    description: "Die E3 ergänzt den E-Jugendbereich mit altersgerechtem Training und Spielpraxis."
+    description: "Die E3 ergänzt den E-Jugendbereich mit altersgerechtem Training und Spielpraxis.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "e4",
@@ -254,7 +404,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 220,
     acceptsTrial: true,
-    description: "Die E4 erweitert das Angebot für junge Spieler im E-Jugendbereich."
+    description: "Die E4 erweitert das Angebot für junge Spieler im E-Jugendbereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -269,7 +429,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 230,
     acceptsTrial: true,
-    description: "Die F1 steht für kindgerechten Fußball im U9-Bereich mit vielen Ballkontakten."
+    description: "Die F1 steht für kindgerechten Fußball im U9-Bereich mit vielen Ballkontakten.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "f2",
@@ -283,7 +453,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 240,
     acceptsTrial: true,
-    description: "Die F2 bietet Kindern im U9-Bereich eine weitere Mannschaftsumgebung."
+    description: "Die F2 bietet Kindern im U9-Bereich eine weitere Mannschaftsumgebung.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "f3",
@@ -297,7 +477,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 250,
     acceptsTrial: true,
-    description: "Die F3 ergänzt die F-Jugend mit spielerischer Förderung und Teamgefühl."
+    description: "Die F3 ergänzt die F-Jugend mit spielerischer Förderung und Teamgefühl.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "f4",
@@ -311,7 +501,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 260,
     acceptsTrial: true,
-    description: "Die F4 schafft zusätzliche Kapazität für den Kinderfußball im U9-Bereich."
+    description: "Die F4 schafft zusätzliche Kapazität für den Kinderfußball im U9-Bereich.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
 
   {
@@ -326,7 +526,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 270,
     acceptsTrial: true,
-    description: "Die G1 begleitet Kinder bei den ersten Schritten im Vereinsfußball."
+    description: "Die G1 begleitet Kinder bei den ersten Schritten im Vereinsfußball.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "g2",
@@ -340,7 +550,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 280,
     acceptsTrial: true,
-    description: "Die G2 bietet weiteren Kindern im U7-Bereich einen Einstieg in den Fußball."
+    description: "Die G2 bietet weiteren Kindern im U7-Bereich einen Einstieg in den Fußball.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   },
   {
     slug: "g3",
@@ -354,6 +574,17 @@ export const footballTeams: FootballTeam[] = [
     status: "verify",
     priority: 290,
     acceptsTrial: true,
-    description: "Die G3 ergänzt den jüngsten Nachwuchsbereich des PSV Düsseldorf."
+    description: "Die G3 ergänzt den jüngsten Nachwuchsbereich des PSV Düsseldorf.",
+
+    dataChecklist: {
+      trainingszeitenGeprueft: false,
+      trainerGeprueft: false,
+      kontaktGeprueft: false,
+      ligaGeprueft: false,
+      bildmaterialVorhanden: false,
+      letztePruefung: "Wird geprüft",
+      interneNotiz: "Vereinsdaten müssen vor Livegang verifiziert werden."
+    }
   }
 ];
+
