@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+﻿import { defineCollection, z } from 'astro:content';
 
 const sportarten = defineCollection({
   type: 'content',
@@ -47,3 +47,4 @@ const kurse = defineCollection({
 });
 
 export const collections = { sportarten, news, kurse };
+

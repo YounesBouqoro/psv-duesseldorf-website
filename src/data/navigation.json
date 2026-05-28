@@ -1,4 +1,4 @@
-{
+﻿{
   "main": [
     {
       "label": "Verein",
@@ -9,7 +9,7 @@
       "href": "/sportarten/"
     },
     {
-      "label": "Fußball",
+      "label": "FuÃŸball",
       "href": "/fussball/"
     },
     {
@@ -34,3 +34,4 @@
     }
   ]
 }
+

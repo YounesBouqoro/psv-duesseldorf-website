@@ -1,6 +1,6 @@
----
-title: "Fußball"
-shortDescription: "Fußball beim PSV Düsseldorf – Jugend, Senioren und Gemeinschaft auf dem Platz."
+﻿---
+title: "FuÃŸball"
+shortDescription: "FuÃŸball beim PSV DÃ¼sseldorf â€“ Jugend, Senioren und Gemeinschaft auf dem Platz."
 category: "Ballsport"
 featured: true
 targetGroups: ["Kinder", "Jugendliche", "Erwachsene"]
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Fußball**.
+Hier entsteht die Abteilungsseite fÃ¼r **FuÃŸball**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

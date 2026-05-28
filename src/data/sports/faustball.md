@@ -1,4 +1,4 @@
----
+﻿---
 title: "Faustball"
 shortDescription: "Traditionsreicher Teamsport mit Dynamik und Gemeinschaft."
 category: "Ballsport"
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Faustball**.
+Hier entsteht die Abteilungsseite fÃ¼r **Faustball**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

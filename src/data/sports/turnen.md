@@ -1,6 +1,6 @@
----
+﻿---
 title: "Turnen"
-shortDescription: "Grundlagen, Bewegung und Körpergefühl für verschiedene Altersgruppen."
+shortDescription: "Grundlagen, Bewegung und KÃ¶rpergefÃ¼hl fÃ¼r verschiedene Altersgruppen."
 category: "Fitness"
 featured: false
 targetGroups: ["Kinder", "Jugendliche"]
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Turnen**.
+Hier entsteht die Abteilungsseite fÃ¼r **Turnen**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

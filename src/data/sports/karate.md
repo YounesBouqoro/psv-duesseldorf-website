@@ -1,6 +1,6 @@
----
+﻿---
 title: "Karate"
-shortDescription: "Traditioneller Kampfsport für Konzentration, Fitness und Selbstvertrauen."
+shortDescription: "Traditioneller Kampfsport fÃ¼r Konzentration, Fitness und Selbstvertrauen."
 category: "Kampfsport"
 featured: false
 targetGroups: ["Kinder", "Jugendliche", "Erwachsene"]
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Karate**.
+Hier entsteht die Abteilungsseite fÃ¼r **Karate**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

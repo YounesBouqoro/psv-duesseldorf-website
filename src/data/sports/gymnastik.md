@@ -1,4 +1,4 @@
----
+﻿---
 title: "Gymnastik"
 shortDescription: "Bewegung, Gesundheit und Fitness in der Gruppe."
 category: "Fitness"
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Gymnastik**.
+Hier entsteht die Abteilungsseite fÃ¼r **Gymnastik**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

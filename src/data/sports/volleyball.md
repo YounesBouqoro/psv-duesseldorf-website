@@ -1,6 +1,6 @@
----
+﻿---
 title: "Volleyball"
-shortDescription: "Teamsport mit Dynamik, Technik und Spaß am Spiel."
+shortDescription: "Teamsport mit Dynamik, Technik und SpaÃŸ am Spiel."
 category: "Ballsport"
 featured: true
 targetGroups: ["Jugendliche", "Erwachsene"]
@@ -13,9 +13,10 @@ training:
     weekday: "Wochentag folgt"
     startTime: "00:00"
     endTime: "00:00"
-    location: "Sportstätte folgt"
+    location: "SportstÃ¤tte folgt"
 ---
 
-Hier entsteht die Abteilungsseite für **Volleyball**.
+Hier entsteht die Abteilungsseite fÃ¼r **Volleyball**.
 
-Die Inhalte werden im nächsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+

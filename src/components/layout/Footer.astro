@@ -1,9 +1,10 @@
-<footer class="site-footer">
+﻿<footer class="site-footer">
   <div class="container footer-grid">
     <div>
       <strong>PSV Düsseldorf</strong>
       <p class="muted">Ein Verein, viele Sportarten, eine starke Gemeinschaft.</p>
     </div>
+
     <div>
       <a href="/psv-duesseldorf-website/kontakt/">Kontakt</a>
       <a href="/psv-duesseldorf-website/impressum/">Impressum</a>
@@ -16,7 +17,8 @@
   .site-footer {
     border-top: 1px solid var(--border);
     padding: 36px 0;
-    background: #080c11;
+    background: #ffffff;
+    color: var(--text);
   }
 
   .footer-grid {
@@ -33,7 +35,14 @@
   }
 
   a {
-    color: var(--muted);
+    color: var(--accent-strong);
     text-decoration: none;
+    font-weight: 700;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
   }
 </style>
+
