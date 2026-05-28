@@ -22,7 +22,7 @@ export async function GET() {
 
   const urls = [
     ...staticPages.map((page) => `${siteUrl}/${page}`.replace(/\/$/, "")),
-    ...sportarten.map((sport) => `${siteUrl}/sportarten/${sport.slug}`)
+    ...sportarten.map((sport) => `${siteUrl}/sportarten/${sport.id}`)
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
