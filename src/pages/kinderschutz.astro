@@ -1,32 +1,153 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+
+const principles = [
+  "Klare Haltung gegen Gewalt, Diskriminierung und Grenzverletzungen",
+  "Sichtbare Anlaufstelle für Kinder, Jugendliche und Eltern",
+  "Verlässliche interne Zuständigkeiten",
+  "Transparente Kommunikation auf der Website"
+];
+
+const nextSteps = [
+  "Finales Kinderschutzkonzept vom Verein anfordern",
+  "Ansprechpersonen offiziell bestätigen",
+  "Kontaktweg und Meldeprozess festlegen",
+  "Dokumente und Inhalte vor Veröffentlichung freigeben"
+];
 ---
 
 <Layout title="Kinderschutz">
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Verantwortung</p>
-      <h1>Kinderschutz im Verein</h1>
-      <p class="muted">
-        Kinderschutz ist ein wichtiger Bestandteil moderner Vereinsarbeit, insbesondere in Sportangeboten mit Kindern und Jugendlichen.
-      </p>
-
-      <div class="card">
-        <h2>Transparente Informationen</h2>
-        <p>
-          Diese Seite soll künftig zentrale Informationen zu Ansprechpartnern, Schutzkonzept, Verhaltensregeln und Meldewegen bündeln.
-          Konkrete Namen und Dokumente werden erst nach offizieller Freigabe ergänzt.
+  <section class="section page-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Verantwortung</p>
+        <h1>Kinderschutz im PSV Düsseldorf</h1>
+        <p class="intro">
+          Der Schutz von Kindern und Jugendlichen ist ein zentraler Bestandteil verantwortungsvoller Vereinsarbeit.
+          Dieser Bereich wird als klare Informations- und Vertrauensseite aufgebaut.
         </p>
       </div>
+
+      <aside class="status-card">
+        <p class="status-label">Wichtig</p>
+        <h2>Inhalt final freigeben</h2>
+        <p>
+          Das vollständige Kinderschutzkonzept muss vor Veröffentlichung durch den Verein geprüft und freigegeben werden.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Grundsätze</p>
+        <h2>Wofür dieser Bereich steht</h2>
+      </div>
+
+      <div class="card-list">
+        {principles.map((item) => (
+          <div class="info-card">{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">To-do vor Launch</p>
+        <h2>Was noch geklärt werden muss</h2>
+      </div>
+
+      <ol class="step-list">
+        {nextSteps.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
     </div>
   </section>
 </Layout>
 
 <style>
-  .eyebrow {
+  .page-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .hero-grid,
+  .split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .eyebrow,
+  .status-label {
     color: var(--accent-strong);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+
+  .status-card,
+  .info-card,
+  .step-list {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .status-card p,
+  .info-card,
+  .step-list li {
+    color: var(--muted);
+  }
+
+  .card-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .step-list {
+    margin: 0;
+    padding-left: 54px;
+  }
+
+  .step-list li {
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+
+  .step-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .split-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
