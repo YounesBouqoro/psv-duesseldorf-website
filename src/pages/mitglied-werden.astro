@@ -1,32 +1,194 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+
+const benefits = [
+  "Zugang zu den Sportangeboten des PSV Düsseldorf",
+  "Teilnahme am Vereinsleben und an Abteilungsangeboten",
+  "Klare Ansprechpartner je Sportart",
+  "Strukturierter Einstieg über Probetraining und Mitgliedschaft"
+];
+
+const steps = [
+  "Passende Sportart auswählen",
+  "Probetraining oder Kontaktaufnahme durchführen",
+  "Beitrittserklärung ausfüllen",
+  "Rückmeldung durch Verein oder Abteilung abwarten"
+];
 ---
 
 <Layout title="Mitglied werden">
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Mitgliedschaft</p>
-      <h1>Mitglied im PSV Düsseldorf werden</h1>
-      <p class="muted">
-        Wer Teil des PSV Düsseldorf werden möchte, soll künftig alle relevanten Informationen zur Mitgliedschaft zentral auf dieser Seite finden.
-      </p>
-
-      <div class="card">
-        <h2>Nächster Ausbauschritt</h2>
-        <p>
-          Hier werden künftig Mitgliedsantrag, Beiträge, Ansprechpartner und wichtige Hinweise zur Aufnahme strukturiert hinterlegt.
-          Bis zur finalen Prüfung werden konkrete Beiträge und rechtliche Informationen nicht automatisch ergänzt.
+  <section class="section page-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Mitgliedschaft</p>
+        <h1>Mitglied werden beim PSV Düsseldorf</h1>
+        <p class="intro">
+          Die Mitgliedschaft wird künftig zentral erklärt: verständlich, transparent und mit klaren nächsten Schritten.
+          So finden Interessierte schneller den richtigen Einstieg in den Verein.
         </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="/psv-duesseldorf-website/probetraining/">Probetraining anfragen</a>
+          <a class="button secondary" href="/psv-duesseldorf-website/downloads/">Downloads ansehen</a>
+        </div>
       </div>
+
+      <aside class="status-card">
+        <p class="status-label">Status</p>
+        <h2>Formulare werden vorbereitet</h2>
+        <p>
+          Die Beitrittserklärung und weitere Dokumente werden im Downloadbereich sauber gebündelt.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Vorteile</p>
+        <h2>Was die Mitgliedschaft ermöglicht</h2>
+      </div>
+
+      <div class="list-grid">
+        {benefits.map((item) => (
+          <div class="info-card">{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Ablauf</p>
+        <h2>So läuft der Einstieg ab</h2>
+      </div>
+
+      <ol class="step-list">
+        {steps.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
     </div>
   </section>
 </Layout>
 
 <style>
+  .page-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .hero-grid,
+  .split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 44px;
+    align-items: start;
+  }
+
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .secondary {
+    border: 1px solid var(--accent);
+    color: var(--accent-strong);
+    background: #ffffff;
+  }
+
+  .status-card,
+  .info-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .status-label {
+    color: var(--accent-strong);
+    font-weight: 900;
+  }
+
+  .status-card p,
+  .info-card {
+    color: var(--muted);
+  }
+
+  .list-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .step-list {
+    margin: 0;
+    padding: 28px 28px 28px 54px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .step-list li {
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .step-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .split-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
