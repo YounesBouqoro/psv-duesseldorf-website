@@ -1,28 +1,55 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+import { getCollection } from "astro:content";
+
+const sportarten = await getCollection("sportarten");
+
+const sortedSports = sportarten.sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
 ---
 
 <Layout title="Sportarten">
   <section class="section">
     <div class="container">
       <p class="eyebrow">Sportangebot</p>
+
       <h1>Sportarten im PSV Düsseldorf</h1>
-      <p class="muted">
-        Der PSV Düsseldorf ist als Mehrspartenverein breit aufgestellt. Die folgenden Sportarten sind aktuell in der Website-Struktur vorgesehen.
+
+      <p class="intro muted">
+        Der PSV Düsseldorf vereint verschiedene Sportarten unter einem gemeinsamen Vereinsdach.
+        Entdecke Trainingsangebote, Ansprechpartner und Abteilungen.
       </p>
 
       <div class="sports-grid">
-        <div class="card"><h2>Boxen</h2><p>Training für Technik, Fitness, Koordination und Durchhaltevermögen.</p></div>
-        <div class="card"><h2>Faustball</h2><p>Mannschaftssport mit Dynamik, Technik und Spielverständnis.</p></div>
-        <div class="card"><h2>Fußball</h2><p>Teamorientierter Sport mit Trainings- und Spielbetrieb.</p></div>
-        <div class="card"><h2>Gymnastik</h2><p>Bewegung, Mobilität und Fitness in gemeinschaftlicher Atmosphäre.</p></div>
-        <div class="card"><h2>Hundesport</h2><p>Sportliche Aktivität und Zusammenarbeit zwischen Mensch und Hund.</p></div>
-        <div class="card"><h2>Judo</h2><p>Kampfsport mit Fokus auf Technik, Respekt, Körperkontrolle und Fairness.</p></div>
-        <div class="card"><h2>Karate</h2><p>Kampfkunst mit Disziplin, Konzentration und körperlicher Entwicklung.</p></div>
-        <div class="card"><h2>Motorsport</h2><p>Motorsportliches Vereinsangebot innerhalb der PSV-Struktur.</p></div>
-        <div class="card"><h2>Schießsport</h2><p>Präzision, Konzentration und Verantwortungsbewusstsein im sportlichen Rahmen.</p></div>
-        <div class="card"><h2>Turnen</h2><p>Beweglichkeit, Koordination und Körperbeherrschung.</p></div>
-        <div class="card"><h2>Volleyball</h2><p>Teamsport mit Dynamik, Technik und gemeinschaftlichem Training.</p></div>
+        {
+          sortedSports.map((sport) => (
+            <article class="sport-card">
+              <div class="sport-card-content">
+                <p class="category">{sport.data.category}</p>
+
+                <h2>{sport.data.title}</h2>
+
+                <p class="description">
+                  {sport.data.shortDescription}
+                </p>
+
+                <div class="tags">
+                  {sport.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+
+                <a
+                  class="sport-link"
+                  href={`/psv-duesseldorf-website/sportarten/${sport.slug}/`}
+                >
+                  Mehr erfahren
+                </a>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -36,24 +63,88 @@ import Layout from "../components/layout/Layout.astro";
     letter-spacing: 0.08em;
   }
 
+  .intro {
+    max-width: 760px;
+    margin-bottom: 40px;
+  }
+
   .sports-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 32px;
+    gap: 24px;
   }
 
-  .card h2 {
-    margin-bottom: 10px;
+  .sport-card {
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    overflow: hidden;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  @media (max-width: 900px) {
+  .sport-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  .sport-card-content {
+    padding: 28px;
+  }
+
+  .category {
+    margin-bottom: 14px;
+    color: var(--accent-strong);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    margin-bottom: 14px;
+  }
+
+  .description {
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f3f8ef;
+    color: var(--accent-strong);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .sport-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  @media (max-width: 960px) {
     .sports-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 640px) {
     .sports-grid {
       grid-template-columns: 1fr;
     }
