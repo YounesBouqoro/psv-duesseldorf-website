@@ -1,32 +1,175 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+
+const opportunities = [
+  {
+    title: "Vereinsförderung",
+    text: "Unternehmen können den PSV Düsseldorf als Gesamtverein unterstützen."
+  },
+  {
+    title: "Abteilungssponsoring",
+    text: "Gezielte Unterstützung einzelner Sportarten oder Mannschaften ist möglich."
+  },
+  {
+    title: "Sachleistungen",
+    text: "Auch Ausstattung, Dienstleistungen oder lokale Kooperationen können Mehrwert schaffen."
+  }
+];
+
+const benefits = [
+  "Lokale Präsenz im Düsseldorfer Vereinssport",
+  "Sichtbarkeit im Umfeld eines Mehrspartenvereins",
+  "Unterstützung von Sport, Jugend, Gemeinschaft und Ehrenamt",
+  "Potenzial für langfristige Partnerschaften"
+];
 ---
 
 <Layout title="Sponsoring">
+  <section class="section page-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Partnerschaften</p>
+        <h1>Sponsoring beim PSV Düsseldorf</h1>
+        <p class="intro">
+          Sponsoring unterstützt den Verein, die Abteilungen und den sportlichen Betrieb.
+          Die neue Website schafft dafür eine klare Anlaufstelle für Unternehmen, Förderer und Partner.
+        </p>
+
+        <a class="button primary" href="/psv-duesseldorf-website/kontakt/">Kontakt aufnehmen</a>
+      </div>
+
+      <aside class="status-card">
+        <p class="status-label">Nächster Schritt</p>
+        <h2>Sponsoring-Angebote konkretisieren</h2>
+        <p>
+          Pakete, Ansprechpartner, Platzierungen und bestehende Partner müssen vor Veröffentlichung final abgestimmt werden.
+        </p>
+      </aside>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Partnerschaft</p>
-      <h1>Sponsoring beim PSV Düsseldorf</h1>
-      <p class="muted">
-        Sponsoring soll den Verein, seine Abteilungen und die Weiterentwicklung der Vereinsangebote nachhaltig unterstützen.
-      </p>
+      <p class="eyebrow">Möglichkeiten</p>
+      <h2>So können Partner unterstützen</h2>
 
-      <div class="card">
-        <h2>Vorteile für Partner</h2>
-        <p>
-          Die neue Website schafft künftig bessere Sichtbarkeit für Unterstützer, Partner und Sponsoren.
-          Mögliche Inhalte sind Partnerprofile, Sponsoringpakete, Kontaktwege und konkrete Unterstützungsbereiche.
-        </p>
+      <div class="opportunity-grid">
+        {opportunities.map((item) => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Mehrwert</p>
+        <h2>Warum eine Partnerschaft sinnvoll ist</h2>
+      </div>
+
+      <div class="benefit-list">
+        {benefits.map((item) => (
+          <div class="benefit-card">{item}</div>
+        ))}
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .eyebrow {
+  .page-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .hero-grid,
+  .split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .eyebrow,
+  .status-label {
     color: var(--accent-strong);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .status-card,
+  .info-card,
+  .benefit-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
+  }
+
+  .status-card p,
+  .info-card p,
+  .benefit-card {
+    color: var(--muted);
+  }
+
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .benefit-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .split-grid,
+    .opportunity-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
