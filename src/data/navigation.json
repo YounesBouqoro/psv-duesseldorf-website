@@ -9,24 +9,28 @@
       "href": "/sportarten/"
     },
     {
-      "label": "FuÃŸball",
-      "href": "/fussball/"
-    },
-    {
-      "label": "Kurse",
-      "href": "/kurse/"
+      "label": "Probetraining",
+      "href": "/probetraining/"
     },
     {
       "label": "Mitglied werden",
       "href": "/mitglied-werden/"
     },
     {
+      "label": "Downloads",
+      "href": "/downloads/"
+    },
+    {
+      "label": "Partner",
+      "href": "/partner/"
+    },
+    {
       "label": "Sponsoring",
       "href": "/sponsoring/"
     },
     {
-      "label": "Aktuelles",
-      "href": "/aktuelles/"
+      "label": "Kinderschutz",
+      "href": "/kinderschutz/"
     },
     {
       "label": "Kontakt",
@@ -34,4 +38,3 @@
     }
   ]
 }
-
