@@ -187,6 +187,24 @@ const youthGroups = [
       </div>
     </div>
   </section>
+  <section class="section">
+    <div class="container">
+      <article class="request-card">
+        <p class="eyebrow">Anfrage vorbereiten</p>
+        <h2>Diese Angaben helfen bei der Einordnung</h2>
+
+        <ul class="request-list">
+          <li>Name des Spielers oder der Spielerin</li>
+          <li>Geburtsjahr</li>
+          <li>Gewünschte Mannschaft oder Altersklasse</li>
+          <li>Bisheriger Verein oder bisherige Fußballerfahrung</li>
+          <li>Position, falls bekannt</li>
+          <li>Kontaktdaten der Eltern oder Kontaktperson</li>
+          <li>Möglicher Zeitraum für ein Probetraining</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -420,5 +438,21 @@ const youthGroups = [
     .trial-team-grid {
       grid-template-columns: 1fr;
     }
+  }
+  .request-card {
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .request-list {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-weight: 700;
   }
 </style>
