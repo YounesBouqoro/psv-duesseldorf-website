@@ -2,8 +2,51 @@
 import Layout from "../components/layout/Layout.astro";
 import { footballTeams } from "../data/footballTeams";
 
-const seniorTeams = footballTeams.filter((team) => team.category === "Senioren").sort((a, b) => a.priority - b.priority);
-const youthTeams = footballTeams.filter((team) => team.category === "Jugend").sort((a, b) => a.priority - b.priority);
+const seniorTeams = footballTeams
+  .filter((team) => team.category === "Senioren")
+  .sort((a, b) => a.priority - b.priority);
+
+const youthTeams = footballTeams
+  .filter((team) => team.category === "Jugend")
+  .sort((a, b) => a.priority - b.priority);
+
+const youthGroups = [
+  {
+    label: "A-Jugend",
+    ageGroup: "U19",
+    teams: youthTeams.filter((team) => team.ageGroup === "U19")
+  },
+  {
+    label: "B-Jugend",
+    ageGroup: "U17",
+    teams: youthTeams.filter((team) => team.ageGroup === "U17")
+  },
+  {
+    label: "C-Jugend",
+    ageGroup: "U15",
+    teams: youthTeams.filter((team) => team.ageGroup === "U15")
+  },
+  {
+    label: "D-Jugend",
+    ageGroup: "U13",
+    teams: youthTeams.filter((team) => team.ageGroup === "U13")
+  },
+  {
+    label: "E-Jugend",
+    ageGroup: "U11",
+    teams: youthTeams.filter((team) => team.ageGroup === "U11")
+  },
+  {
+    label: "F-Jugend",
+    ageGroup: "U9",
+    teams: youthTeams.filter((team) => team.ageGroup === "U9")
+  },
+  {
+    label: "G-Jugend",
+    ageGroup: "U7",
+    teams: youthTeams.filter((team) => team.ageGroup === "U7")
+  }
+];
 ---
 
 <Layout title="Fußball">
@@ -12,18 +55,16 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
       <div>
         <p class="eyebrow">PSV Düsseldorf Fußball</p>
 
-        <h1>
-          Moderne Fußballabteilung mit Jugend- und Seniorenfußball
-        </h1>
+        <h1>Fußball beim PSV Düsseldorf</h1>
 
         <p class="intro">
-          Die Fußballabteilung des PSV Düsseldorf verbindet Nachwuchsförderung,
-          Vereinsleben und ambitionierten Amateurfußball in einer modernen Vereinsstruktur.
+          Der Fußballbereich wird als skalierbare Abteilung mit Senioren, Jugendteams,
+          Teamseiten und Probetrainingsprozess aufgebaut.
         </p>
 
         <div class="hero-actions">
           <a class="button primary" href="/psv-duesseldorf-website/fussball/probetraining/">
-            Probetraining anfragen
+            Fußball-Probetraining anfragen
           </a>
 
           <a class="button secondary" href="/psv-duesseldorf-website/mitglied-werden/">
@@ -34,10 +75,8 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
 
       <div class="hero-card">
         <span>{footballTeams.length}</span>
-        <strong>Mannschaften im Fußballbereich</strong>
-        <p>
-          Jugend- und Seniorenfußball mit skalierbarer Teamstruktur.
-        </p>
+        <strong>Mannschaften & Team-Slots</strong>
+        <p>Saubere Struktur für Senioren, Jugend und spätere echte Vereinsdaten.</p>
       </div>
     </div>
   </section>
@@ -45,7 +84,9 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   <section class="football-anchor-bar">
     <div class="container anchor-inner">
       <a href="#senioren">Senioren</a>
-      <a href="#jugend">Jugend</a>
+      {youthGroups.map((group) => (
+        <a href={`#${group.ageGroup.toLowerCase()}`}>{group.label}</a>
+      ))}
       <a href="#einstieg">Probetraining & Anmeldung</a>
     </div>
   </section>
@@ -53,30 +94,26 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   <section id="senioren" class="section">
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">Senioren</p>
-          <h2>Seniorenmannschaften</h2>
-        </div>
+        <p class="eyebrow">Senioren</p>
+        <h2>Seniorenmannschaften</h2>
       </div>
 
       <div class="team-grid">
         {seniorTeams.map((team) => (
-          <a
-            class="team-card"
-            href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}
-          >
+          <a class="team-card" href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}>
             <div class="team-top">
               <span class="badge">{team.ageGroup}</span>
-              <span class={`status-badge ${team.status}`}>Daten prüfen</span>
+              <span class="status-badge">Daten prüfen</span>
             </div>
 
             <h3>{team.name}</h3>
-
             <p>{team.description}</p>
 
             <div class="team-meta">
               <span>{team.trainingDays.join(" • ")}</span>
-              {team.acceptsTrial && <a class="mini-link" href="/psv-duesseldorf-website/fussball/probetraining/">Probetraining anfragen</a>}
+              {team.acceptsTrial && (
+                <span class="mini-link">Probetraining möglich</span>
+              )}
             </div>
           </a>
         ))}
@@ -87,36 +124,48 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   <section id="jugend" class="section light-section">
     <div class="container">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">Jugend</p>
-          <h2>Jugendmannschaften</h2>
-        </div>
+        <p class="eyebrow">Jugend</p>
+        <h2>Jugendmannschaften</h2>
       </div>
 
-      <div class="team-grid">
-        {youthTeams.map((team) => (
-          <a
-            class="team-card"
-            href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}
-          >
-            <div class="team-top">
-              <span class="badge">{team.ageGroup}</span>
-              <span class={`status-badge ${team.status}`}>Daten prüfen</span>
+      <div class="age-group-stack">
+        {youthGroups.map((group) => (
+          <section id={group.ageGroup.toLowerCase()} class="age-group">
+            <div class="age-group-head">
+              <div>
+                <p class="eyebrow">{group.ageGroup}</p>
+                <h3>{group.label}</h3>
+              </div>
+
+              <span>{group.teams.length} Teams</span>
             </div>
 
-            <h3>{team.name}</h3>
+            <div class="team-grid">
+              {group.teams.map((team) => (
+                <a class="team-card" href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}>
+                  <div class="team-top">
+                    <span class="badge">{team.ageGroup}</span>
+                    <span class="status-badge">Daten prüfen</span>
+                  </div>
 
-            <p>{team.description}</p>
+                  <h3>{team.name}</h3>
+                  <p>{team.description}</p>
 
-            <div class="team-meta">
-              <span>{team.trainingDays.join(" • ")}</span>
-              {team.acceptsTrial && <a class="mini-link" href="/psv-duesseldorf-website/fussball/probetraining/">Probetraining anfragen</a>}
+                  <div class="team-meta">
+                    <span>{team.trainingDays.join(" • ")}</span>
+                    {team.acceptsTrial && (
+                      <span class="mini-link">Probetraining möglich</span>
+                    )}
+                  </div>
+                </a>
+              ))}
             </div>
-          </a>
+          </section>
         ))}
       </div>
     </div>
   </section>
+
   <section id="einstieg" class="section football-process">
     <div class="container process-grid">
       <article class="process-card">
@@ -124,8 +173,7 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
         <h2>Probetraining</h2>
         <p>
           Interessierte Spielerinnen und Spieler können über die Fußball-Probetrainingsseite
-          eine strukturierte Anfrage stellen. So landen Name, Jahrgang und bisherige Erfahrung
-          direkt im richtigen Kontext.
+          eine strukturierte Anfrage stellen.
         </p>
         <a class="text-link" href="/psv-duesseldorf-website/fussball/probetraining/">
           Zum Fußball-Probetraining →
@@ -137,7 +185,7 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
         <h2>Anmeldung</h2>
         <p>
           Nach einem erfolgreichen Probetraining folgt die offizielle Anmeldung über die
-          Vereinsunterlagen. Die finalen Formulare werden vor Livegang noch geprüft und sauber verlinkt.
+          Vereinsunterlagen.
         </p>
         <a class="text-link" href="/psv-duesseldorf-website/mitglied-werden/">
           Mitglied werden →
@@ -145,15 +193,12 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
       </article>
 
       <article class="process-card">
-        <p class="eyebrow">Struktur</p>
-        <h2>Mannschaften</h2>
+        <p class="eyebrow">Datenmodell</p>
+        <h2>Pflegefähig</h2>
         <p>
-          Die Mannschaften werden zentral über ein Datenmodell gepflegt. Dadurch bleiben
-          Übersicht, Teamseiten und Sitemap langfristig konsistent.
+          Teams, Status, Trainingsdaten und Probetraining werden zentral gepflegt und
+          automatisch auf allen Seiten ausgespielt.
         </p>
-        <a class="text-link" href="/psv-duesseldorf-website/fussball/">
-          Mannschaften ansehen →
-        </a>
       </article>
     </div>
   </section>
@@ -173,26 +218,22 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
     align-items: center;
   }
 
-  .hero-card {
-    padding: 36px;
+  .hero-card,
+  .team-card,
+  .process-card {
+    padding: 30px;
     border-radius: var(--radius);
-    background: #ffffff;
     border: 1px solid var(--border);
+    background: #ffffff;
     box-shadow: var(--shadow);
   }
 
   .hero-card span {
     display: block;
+    color: var(--accent-strong);
     font-size: 4rem;
     font-weight: 900;
     line-height: 1;
-    color: var(--accent-strong);
-  }
-
-  .hero-card strong {
-    display: block;
-    margin: 12px 0;
-    font-size: 1.2rem;
   }
 
   .eyebrow {
@@ -210,15 +251,19 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   }
 
   .intro {
-    max-width: 720px;
+    max-width: 740px;
     color: var(--muted);
     font-size: 1.15rem;
   }
 
-  .hero-actions {
+  .hero-actions,
+  .anchor-inner {
     display: flex;
-    flex-wrap: wrap;
     gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions {
     margin-top: 30px;
   }
 
@@ -244,140 +289,6 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
     color: var(--accent-strong);
   }
 
-  .light-section {
-    background: var(--surface);
-  }
-
-  .section-head {
-    margin-bottom: 30px;
-  }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .team-card {
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: var(--shadow);
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease;
-  }
-
-  .team-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-
-  .team-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 18px;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 14px;
-    border-radius: 999px;
-    background: rgba(127, 194, 65, 0.12);
-    color: var(--accent-strong);
-    font-weight: 800;
-  }
-
-  .team-card p {
-    color: var(--muted);
-  }
-
-  .team-meta {
-    margin-top: 22px;
-    color: var(--accent-strong);
-    font-weight: 700;
-  }
-
-  @media (max-width: 980px) {
-    .hero-grid,
-    .team-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .football-process {
-    background: #ffffff;
-  }
-
-  .process-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .process-card {
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    box-shadow: var(--shadow);
-  }
-
-  .process-card p {
-    color: var(--muted);
-  }
-
-  .text-link {
-    display: inline-flex;
-    margin-top: 22px;
-    color: var(--accent-strong);
-    font-weight: 900;
-    text-decoration: none;
-  }
-
-  @media (max-width: 980px) {
-    .process-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 12px;
-    border-radius: 999px;
-    background: #fff7db;
-    color: #8a6500;
-    font-size: 0.82rem;
-    font-weight: 900;
-  }
-
-  .team-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .team-meta strong {
-    color: var(--text);
-    font-size: 0.92rem;
-  }
-  .mini-link {
-    display: inline-flex;
-    width: fit-content;
-    color: var(--accent-strong);
-    font-size: 0.92rem;
-    font-weight: 900;
-    text-decoration: none;
-  }
-
-  .mini-link:hover {
-    text-decoration: underline;
-  }
   .football-anchor-bar {
     position: sticky;
     top: 0;
@@ -388,8 +299,6 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
   }
 
   .anchor-inner {
-    display: flex;
-    gap: 14px;
     overflow-x: auto;
     padding: 14px 0;
   }
@@ -404,11 +313,130 @@ const youthTeams = footballTeams.filter((team) => team.category === "Jugend").so
     text-decoration: none;
   }
 
-  .anchor-inner a:hover {
-    background: rgba(127, 194, 65, 0.16);
+  .light-section {
+    background: var(--surface);
+  }
+
+  .section-head {
+    margin-bottom: 30px;
+  }
+
+  .team-grid,
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .team-card {
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .team-top,
+  .age-group-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .badge,
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.82rem;
+  }
+
+  .badge {
+    background: rgba(127, 194, 65, 0.12);
+    color: var(--accent-strong);
+  }
+
+  .status-badge {
+    background: #fff7db;
+    color: #8a6500;
+  }
+
+  .team-card p,
+  .process-card p,
+  .hero-card p {
+    color: var(--muted);
+  }
+
+  .team-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 22px;
+    color: var(--accent-strong);
+    font-weight: 800;
+  }
+
+  .mini-link,
+  .text-link {
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .text-link {
+    display: inline-flex;
+    margin-top: 22px;
+  }
+
+  .age-group-stack {
+    display: grid;
+    gap: 44px;
+  }
+
+  .age-group {
+    scroll-margin-top: 96px;
+  }
+
+  .age-group-head {
+    padding: 24px;
+    border-radius: var(--radius);
+    background: #ffffff;
+    border: 1px solid var(--border);
+  }
+
+  .age-group-head h3 {
+    margin-bottom: 0;
+    font-size: clamp(26px, 3vw, 36px);
+  }
+
+  .age-group-head span {
+    color: var(--accent-strong);
+    font-weight: 900;
+  }
+
+  .football-process {
+    background: #ffffff;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .team-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .football-anchor-bar {
+      top: 0;
+    }
   }
 </style>
-
-
-
-
