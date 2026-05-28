@@ -10,6 +10,14 @@ const youthTeams = footballTeams
   .filter((team) => team.category === "Jugend")
   .sort((a, b) => a.priority - b.priority);
 
+const dataQualityStats = {
+  totalTeams: footballTeams.length,
+  offeneTrainingszeiten: footballTeams.filter((team) => !team.dataChecklist?.trainingszeitenGeprueft).length,
+  offeneTrainerdaten: footballTeams.filter((team) => !team.dataChecklist?.trainerGeprueft).length,
+  offeneKontakte: footballTeams.filter((team) => !team.dataChecklist?.kontaktGeprueft).length,
+  fehlendesBildmaterial: footballTeams.filter((team) => !team.dataChecklist?.bildmaterialVorhanden).length
+};
+
 const youthGroups = [
   {
     label: "A-Jugend",
