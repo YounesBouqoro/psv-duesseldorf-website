@@ -2,8 +2,8 @@
 import Layout from "../../components/layout/Layout.astro";
 import { footballTeams } from "../../data/footballTeams";
 
-const youthTeams = footballTeams.filter((team) => team.category === "Jugend");
-const seniorTeams = footballTeams.filter((team) => team.category === "Senioren");
+const youthTeams = footballTeams.filter((team) => team.category === "Jugend" && team.acceptsTrial).sort((a, b) => a.priority - b.priority);
+const seniorTeams = footballTeams.filter((team) => team.category === "Senioren" && team.acceptsTrial).sort((a, b) => a.priority - b.priority);
 ---
 
 <Layout title="Probetraining Fußball">
