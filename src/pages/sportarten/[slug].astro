@@ -1,0 +1,147 @@
+﻿---
+import Layout from "../../components/layout/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const sportarten = await getCollection("sportarten");
+
+  return sportarten.map((sport) => ({
+    params: { slug: sport.id },
+    props: { sport },
+  }));
+}
+
+const { sport } = Astro.props;
+const { Content } = await render(sport);
+
+const trainingItems = sport.data.training ?? [];
+const contact = sport.data.contact;
+---
+
+<Layout title={sport.data.title}>
+  <section class="section sport-hero">
+    <div class="container">
+      <a class="back-link" href="/psv-duesseldorf-website/sportarten/">← Zurück zu allen Sportarten</a>
+      <p class="eyebrow">{sport.data.category}</p>
+      <h1>{sport.data.title}</h1>
+      <p class="intro">{sport.data.shortDescription}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <article class="content-card">
+        <h2>Über diese Abteilung</h2>
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        {trainingItems.length > 0 && (
+          <div class="info-card">
+            <h2>Trainingszeiten</h2>
+            {trainingItems.map((item) => (
+              <div class="training-item">
+                <h3>{item.groupName}</h3>
+                <p><strong>{item.weekday}</strong><br />{item.startTime}–{item.endTime}</p>
+                <p>{item.location}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {contact && (
+          <div class="info-card">
+            <h2>Ansprechpartner</h2>
+            <p><strong>{contact.name}</strong><br />{contact.role}</p>
+            {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+          </div>
+        )}
+
+        <div class="info-card">
+          <h2>Interesse?</h2>
+          <p>Du möchtest mehr erfahren oder ein Probetraining anfragen?</p>
+          <a class="button" href="/psv-duesseldorf-website/probetraining/">Probetraining anfragen</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sport-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .back-link,
+  .eyebrow,
+  a {
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 900px;
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .content-card,
+  .info-card {
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .sidebar {
+    display: grid;
+    gap: 18px;
+  }
+
+  .training-item {
+    padding-top: 18px;
+    margin-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .button {
+    display: inline-flex;
+    margin-top: 16px;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  @media (max-width: 900px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
