@@ -68,17 +68,17 @@ const { team } = Astro.props;
       <article class="content-card">
         <p class="eyebrow">Probetraining</p>
 
-        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Kontakt aufnehmen"}</h2>
+        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Probetraining anfragen"}</h2>
 
         <p>
-          Für Anfragen zum Probetraining oder zur Mannschaft bitte direkt Kontakt aufnehmen.
+          Für Anfragen zum Probetraining oder zur Mannschaft bitte direkt Probetraining anfragen.
         </p>
 
         <a
           class="button primary"
-          href={`mailto:${team.contactMail}`}
+          href={`/psv-duesseldorf-website/fussball/probetraining/`}
         >
-          Kontakt aufnehmen
+          Probetraining anfragen
         </a>
       </article>
     </div>
@@ -180,4 +180,5 @@ const { team } = Astro.props;
     font-weight: 900;
   }
 </style>
+
 
