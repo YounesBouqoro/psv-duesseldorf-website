@@ -1,75 +1,106 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+import { footballTeams } from "../data/footballTeams";
 
-const teams = [
-  {
-    title: "Senioren",
-    text: "Informationen zu Herrenmannschaften, Spielbetrieb und Ansprechpartnern."
-  },
-  {
-    title: "Jugend",
-    text: "Jugendfußball mit Mannschaften verschiedener Altersklassen."
-  },
-  {
-    title: "Probetraining",
-    text: "Interessierte Spieler können sich für ein Probetraining melden."
-  }
-];
-
-const topics = [
-  "Mannschaften",
-  "Trainerteams",
-  "Trainingszeiten",
-  "Spielbetrieb",
-  "Turniere & Events",
-  "Jugendförderung"
-];
+const seniorTeams = footballTeams.filter((team) => team.category === "Senioren");
+const youthTeams = footballTeams.filter((team) => team.category === "Jugend");
 ---
 
 <Layout title="Fußball">
   <section class="section football-hero">
-    <div class="container">
-      <p class="eyebrow">Abteilung</p>
-      <h1>Fußball beim PSV Düsseldorf</h1>
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">PSV Düsseldorf Fußball</p>
 
-      <p class="intro">
-        Die Fußballabteilung wird als eigenständiger Bereich innerhalb der neuen Website aufgebaut.
-        Ziel ist eine moderne und übersichtliche Struktur für Spieler, Eltern, Trainer und Interessierte.
-      </p>
+        <h1>
+          Moderne Fußballabteilung mit Jugend- und Seniorenfußball
+        </h1>
 
-      <div class="hero-actions">
-        <a class="button primary" href="/psv-duesseldorf-website/probetraining/">
-          Probetraining anfragen
-        </a>
+        <p class="intro">
+          Die Fußballabteilung des PSV Düsseldorf verbindet Nachwuchsförderung,
+          Vereinsleben und ambitionierten Amateurfußball in einer modernen Vereinsstruktur.
+        </p>
 
-        <a class="button secondary" href="/psv-duesseldorf-website/kontakt/">
-          Kontakt
-        </a>
+        <div class="hero-actions">
+          <a class="button primary" href="/psv-duesseldorf-website/probetraining/">
+            Probetraining anfragen
+          </a>
+
+          <a class="button secondary" href="/psv-duesseldorf-website/mitglied-werden/">
+            Mitglied werden
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <span>{footballTeams.length}</span>
+        <strong>Mannschaften im Fußballbereich</strong>
+        <p>
+          Jugend- und Seniorenfußball mit skalierbarer Teamstruktur.
+        </p>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container team-grid">
-      {teams.map((team) => (
-        <article class="team-card">
-          <h2>{team.title}</h2>
-          <p>{team.text}</p>
-        </article>
-      ))}
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Senioren</p>
+          <h2>Seniorenmannschaften</h2>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        {seniorTeams.map((team) => (
+          <a
+            class="team-card"
+            href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}
+          >
+            <div class="team-top">
+              <span class="badge">{team.ageGroup}</span>
+            </div>
+
+            <h3>{team.name}</h3>
+
+            <p>{team.description}</p>
+
+            <div class="team-meta">
+              <span>{team.trainingDays.join(" • ")}</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section light-section">
-    <div class="container split-grid">
-      <div>
-        <p class="eyebrow">Geplant</p>
-        <h2>Was hier entstehen soll</h2>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Jugend</p>
+          <h2>Jugendmannschaften</h2>
+        </div>
       </div>
 
-      <div class="topic-list">
-        {topics.map((topic) => (
-          <div class="topic-card">{topic}</div>
+      <div class="team-grid">
+        {youthTeams.map((team) => (
+          <a
+            class="team-card"
+            href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}
+          >
+            <div class="team-top">
+              <span class="badge">{team.ageGroup}</span>
+            </div>
+
+            <h3>{team.name}</h3>
+
+            <p>{team.description}</p>
+
+            <div class="team-meta">
+              <span>{team.trainingDays.join(" • ")}</span>
+            </div>
+          </a>
         ))}
       </div>
     </div>
@@ -83,6 +114,35 @@ const topics = [
       linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
   }
 
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .hero-card {
+    padding: 36px;
+    border-radius: var(--radius);
+    background: #ffffff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-card span {
+    display: block;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent-strong);
+  }
+
+  .hero-card strong {
+    display: block;
+    margin: 12px 0;
+    font-size: 1.2rem;
+  }
+
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 900;
@@ -91,22 +151,22 @@ const topics = [
   }
 
   h1 {
-    max-width: 980px;
+    max-width: 900px;
     font-size: clamp(42px, 7vw, 78px);
-    line-height: 0.98;
-    margin: 16px 0 24px;
+    line-height: 0.96;
+    margin: 18px 0 24px;
   }
 
   .intro {
-    max-width: 760px;
+    max-width: 720px;
     color: var(--muted);
     font-size: 1.15rem;
   }
 
   .hero-actions {
     display: flex;
-    gap: 14px;
     flex-wrap: wrap;
+    gap: 14px;
     margin-top: 30px;
   }
 
@@ -117,8 +177,8 @@ const topics = [
     min-height: 48px;
     padding: 0 22px;
     border-radius: 999px;
-    font-weight: 900;
     text-decoration: none;
+    font-weight: 900;
   }
 
   .primary {
@@ -132,46 +192,68 @@ const topics = [
     color: var(--accent-strong);
   }
 
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-  }
-
-  .team-card,
-  .topic-card {
-    padding: 30px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .team-card p,
-  .topic-card {
-    color: var(--muted);
-  }
-
   .light-section {
     background: var(--surface);
   }
 
-  .split-grid {
-    display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
-    gap: 36px;
+  .section-head {
+    margin-bottom: 30px;
   }
 
-  .topic-list {
+  .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
   }
 
-  @media (max-width: 900px) {
-    .team-grid,
-    .split-grid,
-    .topic-list {
+  .team-card {
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: #ffffff;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .team-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(127, 194, 65, 0.12);
+    color: var(--accent-strong);
+    font-weight: 800;
+  }
+
+  .team-card p {
+    color: var(--muted);
+  }
+
+  .team-meta {
+    margin-top: 22px;
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .team-grid {
       grid-template-columns: 1fr;
     }
   }

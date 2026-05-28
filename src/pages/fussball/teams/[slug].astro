@@ -1,0 +1,161 @@
+﻿---
+import Layout from "../../../components/layout/Layout.astro";
+import { footballTeams } from "../../../data/footballTeams";
+
+export async function getStaticPaths() {
+  return footballTeams.map((team) => ({
+    params: {
+      slug: team.slug
+    },
+    props: {
+      team
+    }
+  }));
+}
+
+const { team } = Astro.props;
+---
+
+<Layout title={team.name}>
+  <section class="section team-hero">
+    <div class="container">
+      <p class="eyebrow">{team.category}</p>
+
+      <h1>{team.name}</h1>
+
+      <p class="intro">
+        {team.description}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container info-grid">
+      <article class="info-card">
+        <h2>Altersklasse</h2>
+        <p>{team.ageGroup}</p>
+      </article>
+
+      <article class="info-card">
+        <h2>Trainingstage</h2>
+        <p>{team.trainingDays.join(" • ")}</p>
+      </article>
+
+      <article class="info-card">
+        <h2>Trainingsort</h2>
+        <p>{team.location}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
+      <article class="content-card">
+        <p class="eyebrow">Trainerteam</p>
+
+        <h2>Betreuung der Mannschaft</h2>
+
+        <ul>
+          {team.coaches.map((coach) => (
+            <li>{coach}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="content-card">
+        <p class="eyebrow">Probetraining</p>
+
+        <h2>Interesse am Team?</h2>
+
+        <p>
+          Für Anfragen zum Probetraining oder zur Mannschaft bitte direkt Kontakt aufnehmen.
+        </p>
+
+        <a
+          class="button primary"
+          href={`mailto:${team.contactMail}`}
+        >
+          Kontakt aufnehmen
+        </a>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .team-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.96;
+    margin: 18px 0 24px;
+  }
+
+  .intro {
+    max-width: 720px;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .info-card,
+  .content-card {
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 900;
+    margin-top: 24px;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 980px) {
+    .info-grid,
+    .split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
