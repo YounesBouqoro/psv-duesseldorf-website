@@ -1,0 +1,178 @@
+﻿---
+import Layout from "../components/layout/Layout.astro";
+
+const teams = [
+  {
+    title: "Senioren",
+    text: "Informationen zu Herrenmannschaften, Spielbetrieb und Ansprechpartnern."
+  },
+  {
+    title: "Jugend",
+    text: "Jugendfußball mit Mannschaften verschiedener Altersklassen."
+  },
+  {
+    title: "Probetraining",
+    text: "Interessierte Spieler können sich für ein Probetraining melden."
+  }
+];
+
+const topics = [
+  "Mannschaften",
+  "Trainerteams",
+  "Trainingszeiten",
+  "Spielbetrieb",
+  "Turniere & Events",
+  "Jugendförderung"
+];
+---
+
+<Layout title="Fußball">
+  <section class="section football-hero">
+    <div class="container">
+      <p class="eyebrow">Abteilung</p>
+      <h1>Fußball beim PSV Düsseldorf</h1>
+
+      <p class="intro">
+        Die Fußballabteilung wird als eigenständiger Bereich innerhalb der neuen Website aufgebaut.
+        Ziel ist eine moderne und übersichtliche Struktur für Spieler, Eltern, Trainer und Interessierte.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="/psv-duesseldorf-website/probetraining/">
+          Probetraining anfragen
+        </a>
+
+        <a class="button secondary" href="/psv-duesseldorf-website/kontakt/">
+          Kontakt
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container team-grid">
+      {teams.map((team) => (
+        <article class="team-card">
+          <h2>{team.title}</h2>
+          <p>{team.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Geplant</p>
+        <h2>Was hier entstehen soll</h2>
+      </div>
+
+      <div class="topic-list">
+        {topics.map((topic) => (
+          <div class="topic-card">{topic}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .football-hero {
+    background:
+      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
+      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  }
+
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 0.98;
+    margin: 16px 0 24px;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .secondary {
+    border: 1px solid var(--accent);
+    background: #ffffff;
+    color: var(--accent-strong);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .team-card,
+  .topic-card {
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .team-card p,
+  .topic-card {
+    color: var(--muted);
+  }
+
+  .light-section {
+    background: var(--surface);
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .topic-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  @media (max-width: 900px) {
+    .team-grid,
+    .split-grid,
+    .topic-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
