@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { team } = Astro.props;
 ---
 
-<Layout title={team.name}>
+<Layout title={`${team.name} Fußball | PSV Düsseldorf`}>
   <section class="section team-hero">
     <div class="container breadcrumb">
       <a href="/psv-duesseldorf-website/fussball/">Fußball</a>
@@ -261,6 +261,7 @@ const { team } = Astro.props;
     }
   }
 </style>
+
 
 
 
