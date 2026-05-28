@@ -19,7 +19,10 @@ const { team } = Astro.props;
 <Layout title={team.name}>
   <section class="section team-hero">
     <div class="container">
-      <p class="eyebrow">{team.category}</p>
+      <div class="hero-labels">
+        <p class="eyebrow">{team.category}</p>
+        <span class="status-badge">Daten vor Livegang prüfen</span>
+      </div>
 
       <h1>{team.name}</h1>
 
@@ -65,7 +68,7 @@ const { team } = Astro.props;
       <article class="content-card">
         <p class="eyebrow">Probetraining</p>
 
-        <h2>Interesse am Team?</h2>
+        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Kontakt aufnehmen"}</h2>
 
         <p>
           Für Anfragen zum Probetraining oder zur Mannschaft bitte direkt Kontakt aufnehmen.
@@ -158,4 +161,23 @@ const { team } = Astro.props;
       grid-template-columns: 1fr;
     }
   }
+  .hero-labels {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #fff7db;
+    color: #8a6500;
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
 </style>
+
