@@ -1,0 +1,61 @@
+﻿---
+import Layout from "../components/layout/Layout.astro";
+---
+
+<Layout title="Sportarten">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Sportangebot</p>
+      <h1>Sportarten im PSV Düsseldorf</h1>
+      <p class="muted">
+        Der PSV Düsseldorf ist als Mehrspartenverein breit aufgestellt. Die folgenden Sportarten sind aktuell in der Website-Struktur vorgesehen.
+      </p>
+
+      <div class="sports-grid">
+        <div class="card"><h2>Boxen</h2><p>Training für Technik, Fitness, Koordination und Durchhaltevermögen.</p></div>
+        <div class="card"><h2>Faustball</h2><p>Mannschaftssport mit Dynamik, Technik und Spielverständnis.</p></div>
+        <div class="card"><h2>Fußball</h2><p>Teamorientierter Sport mit Trainings- und Spielbetrieb.</p></div>
+        <div class="card"><h2>Gymnastik</h2><p>Bewegung, Mobilität und Fitness in gemeinschaftlicher Atmosphäre.</p></div>
+        <div class="card"><h2>Hundesport</h2><p>Sportliche Aktivität und Zusammenarbeit zwischen Mensch und Hund.</p></div>
+        <div class="card"><h2>Judo</h2><p>Kampfsport mit Fokus auf Technik, Respekt, Körperkontrolle und Fairness.</p></div>
+        <div class="card"><h2>Karate</h2><p>Kampfkunst mit Disziplin, Konzentration und körperlicher Entwicklung.</p></div>
+        <div class="card"><h2>Motorsport</h2><p>Motorsportliches Vereinsangebot innerhalb der PSV-Struktur.</p></div>
+        <div class="card"><h2>Schießsport</h2><p>Präzision, Konzentration und Verantwortungsbewusstsein im sportlichen Rahmen.</p></div>
+        <div class="card"><h2>Turnen</h2><p>Beweglichkeit, Koordination und Körperbeherrschung.</p></div>
+        <div class="card"><h2>Volleyball</h2><p>Teamsport mit Dynamik, Technik und gemeinschaftlichem Training.</p></div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .eyebrow {
+    color: var(--accent-strong);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .card h2 {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .sports-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .sports-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -6,16 +6,31 @@ import Layout from "../components/layout/Layout.astro";
   <section class="section hero-section">
     <div class="container">
       <p class="eyebrow">Polizei-Sport-Verein Düsseldorf e.V.</p>
-      <h1>Ein moderner Mehrspartenverein für Düsseldorf.</h1>
-      <p class="muted hero-text">
-        Die neue Website bündelt Sportarten, Kurse, Mitgliedschaft, Probetraining, Sponsoring und Kontaktwege an einem zentralen Ort.
+      <h1>Ein Verein. Viele Sportarten. Eine starke Gemeinschaft.</h1>
+      <p class="hero-text">
+        Der PSV Düsseldorf ist ein Mehrspartenverein mit Angeboten für unterschiedliche Altersgruppen, Leistungsniveaus und Interessen.
+        Die neue Website bündelt künftig Sportarten, Kurse, Mitgliedschaft, Probetraining, Sponsoring und Kontaktwege an einem zentralen Ort.
       </p>
 
-      <div class="card">
-        <h2>Website im Aufbau</h2>
-        <p>
-          Die technische Basis steht. Als nächstes werden Inhalte, Sportarten, Ansprechpartner und Vereinsinformationen sauber ausgearbeitet.
-        </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/psv-duesseldorf-website/sportarten/">Sportarten entdecken</a>
+        <a class="button secondary" href="/psv-duesseldorf-website/mitglied-werden/">Mitglied werden</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container">
+      <h2>Sportangebot im PSV Düsseldorf</h2>
+      <p class="muted">
+        Der Verein bietet ein breites Spektrum an Sportarten und Abteilungen. Die Inhalte werden Schritt für Schritt digital aufbereitet.
+      </p>
+
+      <div class="grid">
+        <a class="card link-card" href="/psv-duesseldorf-website/sportarten/">Sportarten</a>
+        <a class="card link-card" href="/psv-duesseldorf-website/probetraining/">Probetraining</a>
+        <a class="card link-card" href="/psv-duesseldorf-website/kinderschutz/">Kinderschutz</a>
+        <a class="card link-card" href="/psv-duesseldorf-website/sponsoring/">Sponsoring</a>
       </div>
     </div>
   </section>
@@ -23,28 +38,87 @@ import Layout from "../components/layout/Layout.astro";
 
 <style>
   .hero-section {
-    min-height: 70vh;
+    min-height: 72vh;
     display: flex;
     align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
   }
 
   .eyebrow {
-    color: var(--accent);
+    color: var(--accent-strong);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
   h1 {
-    max-width: 920px;
-    font-size: clamp(42px, 7vw, 88px);
-    line-height: 0.95;
+    max-width: 980px;
+    font-size: clamp(42px, 7vw, 84px);
+    line-height: 0.98;
     margin: 16px 0 24px;
   }
 
   .hero-text {
-    max-width: 760px;
+    max-width: 780px;
     font-size: 1.2rem;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .secondary {
+    border: 1px solid var(--accent);
+    color: var(--accent-strong);
+    background: #ffffff;
+  }
+
+  .light-section {
+    background: #ffffff;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .link-card {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
-
