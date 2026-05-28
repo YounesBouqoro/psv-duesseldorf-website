@@ -20,3 +20,9 @@ Hier entsteht die Abteilungsseite fÃ¼r **FuÃŸball**.
 
 Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
 
+
+## Fußballbereich
+
+Für die Fußballabteilung gibt es einen eigenen Bereich mit Mannschaftsübersicht, Teamseiten und Probetrainingsprozess.
+
+[Zum Fußballbereich](/psv-duesseldorf-website/fussball/)
