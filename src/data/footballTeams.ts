@@ -12,6 +12,16 @@
   priority: number;
   acceptsTrial: boolean;
   description: string;
+
+dataChecklist: {
+  trainingszeitenGeprueft: boolean;
+  trainerGeprueft: boolean;
+  kontaktGeprueft: boolean;
+  ligaGeprueft: boolean;
+  bildmaterialVorhanden: boolean;
+  letztePruefung?: string;
+  interneNotiz?: string;
+};
 }
 
 export const footballTeams: FootballTeam[] = [
