@@ -1,5 +1,6 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+import { withBase } from "../utils/paths";
 
 const partnerTypes = [
   {
@@ -24,7 +25,7 @@ const partnerTypes = [
       <h1>Partner des PSV Düsseldorf</h1>
       <p class="intro">
         Partner stärken den Verein durch Angebote, Kooperationen und Unterstützung im Vereinsalltag.
-        Die neue Website schafft dafür eine klare und professionelle Darstellung.
+        Für Kooperationen und gemeinsame Projekte ist die Geschäftsstelle die zentrale Anlaufstelle.
       </p>
     </div>
   </section>
@@ -51,7 +52,7 @@ const partnerTypes = [
         </p>
       </div>
 
-      <a class="button primary" href="/psv-duesseldorf-website/kontakt/">Kontakt aufnehmen</a>
+      <a class="button primary" href={withBase("/kontakt/")}>Kontakt aufnehmen</a>
     </div>
   </section>
 </Layout>

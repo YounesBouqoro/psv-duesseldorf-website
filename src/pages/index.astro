@@ -1,6 +1,7 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../utils/paths";
 
 const sportarten = await getCollection("sportarten");
 const featuredSports = sportarten
@@ -23,21 +24,21 @@ const sportsToShow = featuredSports.length > 0 ? featuredSports : fallbackSports
         <h1>Der Sportverein für alle in Düsseldorf.</h1>
 
         <p class="hero-text">
-          Der PSV Düsseldorf bündelt verschiedene Sportarten, Kurse und Vereinsangebote unter einem Dach.
-          Die neue Website macht Sportarten, Ansprechpartner, Mitgliedschaft und Probetraining schnell auffindbar.
+          Ob Breiten-, Wettkampf- oder Gesundheitssport: Der PSV Düsseldorf bietet Bewegung,
+          Gemeinschaft und passende Angebote für unterschiedliche Altersgruppen.
         </p>
 
         <div class="hero-actions">
-          <a class="button primary" href="/psv-duesseldorf-website/sportarten/">Sportarten entdecken</a>
-          <a class="button secondary" href="/psv-duesseldorf-website/probetraining/">Probetraining anfragen</a>
+          <a class="button primary" href={withBase("/sportarten/")}>Sportarten entdecken</a>
+          <a class="button secondary" href={withBase("/probetraining/")}>Probetraining anfragen</a>
         </div>
       </div>
 
       <div class="hero-panel">
-        <p class="panel-label">Website-Relaunch</p>
-        <h2>Mehr Struktur. Mehr Sichtbarkeit. Mehr Verein.</h2>
+        <p class="panel-label">Direkt zum Einstieg</p>
+        <h2>Dein Sport. Dein Verein.</h2>
         <p>
-          Inhalte werden Schritt für Schritt aus dem alten Auftritt in eine moderne, klare und pflegeleichte Website-Struktur überführt.
+          Finde Trainingszeiten und Ansprechpersonen direkt bei der jeweiligen Sportart oder nimm zentral Kontakt mit uns auf.
         </p>
       </div>
     </div>
@@ -51,13 +52,13 @@ const sportsToShow = featuredSports.length > 0 ? featuredSports : fallbackSports
           <h2>Sportarten im Überblick</h2>
         </div>
 
-        <a class="text-link" href="/psv-duesseldorf-website/sportarten/">Alle Sportarten ansehen</a>
+        <a class="text-link" href={withBase("/sportarten/")}>Alle Sportarten ansehen</a>
       </div>
 
       <div class="sports-grid">
         {
           sportsToShow.map((sport) => (
-            <a class="sport-card" href={`/psv-duesseldorf-website/sportarten/${sport.slug}/`}>
+            <a class="sport-card" href={withBase(`/sportarten/${sport.id}/`)}>
               <p class="category">{sport.data.category}</p>
               <h3>{sport.data.title}</h3>
               <p>{sport.data.shortDescription}</p>
@@ -74,17 +75,17 @@ const sportsToShow = featuredSports.length > 0 ? featuredSports : fallbackSports
       <div class="action-card">
         <h2>Mitglied werden</h2>
         <p>
-          Alle wichtigen Informationen zur Mitgliedschaft werden zentral gebündelt und verständlich aufbereitet.
+          Erfahre, wie der Einstieg funktioniert, und lade die Beitrittserklärung direkt herunter.
         </p>
-        <a class="button secondary" href="/psv-duesseldorf-website/mitglied-werden/">Zur Mitgliedschaft</a>
+        <a class="button secondary" href={withBase("/mitglied-werden/")}>Zur Mitgliedschaft</a>
       </div>
 
       <div class="action-card">
         <h2>Kinderschutz</h2>
         <p>
-          Der Bereich Kinderschutz wird als eigener Vertrauensbereich sichtbar und strukturiert aufgebaut.
+          Schutz, Respekt und verlässliche Ansprechpersonen gehören zu unserem Vereinsleben.
         </p>
-        <a class="button secondary" href="/psv-duesseldorf-website/kinderschutz/">Zum Kinderschutz</a>
+        <a class="button secondary" href={withBase("/kinderschutz/")}>Zum Kinderschutz</a>
       </div>
     </div>
   </section>

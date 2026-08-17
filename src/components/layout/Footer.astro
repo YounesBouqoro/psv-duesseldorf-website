@@ -1,39 +1,44 @@
-﻿<footer class="site-footer">
+﻿---
+import { withBase } from "../../utils/paths";
+---
+
+<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       <strong>PSV Düsseldorf</strong>
       <p>Ein Verein, viele Sportarten, eine starke Gemeinschaft.</p>
-      <a class="footer-cta" href="/psv-duesseldorf-website/fussball/probetraining/">Fußball-Probetraining anfragen</a>
+      <a class="footer-cta" href={withBase("/probetraining/")}>Probetraining anfragen</a>
     </div>
 
     <div class="footer-column">
       <h2>Verein</h2>
-      <a href="/psv-duesseldorf-website/verein/">Über den Verein</a>
-      <a href="/psv-duesseldorf-website/sportarten/">Sportarten</a>
-      <a href="/psv-duesseldorf-website/fussball/">Fußball</a>
-      <a href="/psv-duesseldorf-website/mitglied-werden/">Mitglied werden</a>
-      <a href="/psv-duesseldorf-website/kinderschutz/">Kinderschutz</a>
+      <a href={withBase("/verein/")}>Über den Verein</a>
+      <a href={withBase("/sportarten/")}>Sportarten</a>
+      <a href={withBase("/fussball/")}>Fußball</a>
+      <a href={withBase("/mitglied-werden/")}>Mitglied werden</a>
+      <a href={withBase("/kinderschutz/")}>Kinderschutz</a>
     </div>
 
     <div class="footer-column">
       <h2>Service</h2>
-      <a href="/psv-duesseldorf-website/fussball/probetraining/">Fußball-Probetraining</a>
-      <a href="/psv-duesseldorf-website/downloads/">Downloads</a>
-      <a href="/psv-duesseldorf-website/partner/">Partner</a>
-      <a href="/psv-duesseldorf-website/sponsoring/">Sponsoring</a>
-      <a href="/psv-duesseldorf-website/kontakt/">Kontakt</a>
+      <a href={withBase("/fussball/probetraining/")}>Fußball-Probetraining</a>
+      <a href={withBase("/kurse/")}>Kurse</a>
+      <a href={withBase("/downloads/")}>Downloads</a>
+      <a href={withBase("/partner/")}>Partner</a>
+      <a href={withBase("/sponsoring/")}>Sponsoring</a>
+      <a href={withBase("/kontakt/")}>Kontakt</a>
     </div>
 
     <div class="footer-column">
       <h2>Rechtliches</h2>
-      <a href="/psv-duesseldorf-website/impressum/">Impressum</a>
-      <a href="/psv-duesseldorf-website/datenschutz/">Datenschutz</a>
+      <a href={withBase("/impressum/")}>Impressum</a>
+      <a href={withBase("/datenschutz/")}>Datenschutz</a>
     </div>
   </div>
 
   <div class="container footer-bottom">
     <span>© PSV Düsseldorf</span>
-    <span>Website-Relaunch in Umsetzung</span>
+    <span>Der Sportverein für alle</span>
   </div>
 </footer>
 
@@ -121,4 +126,3 @@
     }
   }
 </style>
-

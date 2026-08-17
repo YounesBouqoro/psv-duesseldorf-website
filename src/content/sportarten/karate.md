@@ -1,22 +1,31 @@
-﻿---
+---
 title: "Karate"
-shortDescription: "Traditioneller Kampfsport fÃ¼r Konzentration, Fitness und Selbstvertrauen."
+shortDescription: "Klassisches Shotokan-Karate für Technik, Selbstvertrauen und innere Ruhe."
 category: "Kampfsport"
-featured: false
+featured: true
 targetGroups: ["Kinder", "Jugendliche", "Erwachsene"]
-tags: ["Kampfsport"]
+tags: ["Shotokan", "Selbstverteidigung", "Konzentration"]
 contact:
-  name: "Ansprechpartner folgt"
-  role: "Abteilungsleitung"
+  name: "Jürgen Koch"
+  role: "Ansprechpartner"
+  email: "karate@polizei-sv-duesseldorf.de"
 training:
-  - groupName: "Trainingsgruppe"
-    weekday: "Wochentag folgt"
-    startTime: "00:00"
-    endTime: "00:00"
-    location: "SportstÃ¤tte folgt"
+  - groupName: "Minis bis 8 Jahre und Anfänger"
+    weekday: "Montag"
+    startTime: "17:00"
+    endTime: "18:00"
+    location: "Gemeinschaftshauptschule, Graf-Recke-Straße 230, 40235 Düsseldorf"
+  - groupName: "Fortgeschrittene"
+    weekday: "Montag, Mittwoch und Freitag"
+    startTime: "18:00"
+    endTime: "19:30"
+    location: "Gemeinschaftshauptschule, Graf-Recke-Straße 230, 40235 Düsseldorf"
+trialAvailability: "contact"
+trialNote: "Bitte vor dem ersten Training Kontakt mit der Abteilung aufnehmen."
+sourceUrl: "https://polizei-sv-duesseldorf.de/karate/"
+lastVerified: "2026-08-17"
 ---
 
-Hier entsteht die Abteilungsseite fÃ¼r **Karate**.
+Im YushinKai Dojo wird klassisches Karate-Do der Stilrichtung Shotokan vermittelt. Neben Technik und Selbstverteidigung stehen Konzentration, Körperkontrolle, Selbstbewusstsein und ein respektvoller Umgang im Mittelpunkt.
 
-Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
-
+Die veröffentlichten Jahresbeiträge betragen 168 Euro für Jugendliche und 184 Euro für Erwachsene.

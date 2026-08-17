@@ -1,483 +1,216 @@
-﻿---
+---
 import Layout from "../../components/layout/Layout.astro";
 import { footballTeams } from "../../data/footballTeams";
+import { withBase } from "../../utils/paths";
 
-const trialTeams = footballTeams
-  .filter((team) => team.acceptsTrial)
-  .sort((a, b) => a.priority - b.priority);
-import { footballTeams } from "../../data/footballTeams";
+const seniorTeams = footballTeams.filter((team) => team.category === "Senioren");
+const youthTeams = footballTeams.filter((team) => team.category === "Jugend");
+const youthGroups = [...new Set(youthTeams.map((team) => team.ageGroup))].map((ageGroup) => ({
+  ageGroup,
+  teams: youthTeams.filter((team) => team.ageGroup === ageGroup)
+}));
 
-const seniorTeams = footballTeams
-  .filter((team) => team.category === "Senioren" && team.acceptsTrial)
-  .sort((a, b) => a.priority - b.priority);
-
-const youthTeams = footballTeams
-  .filter((team) => team.category === "Jugend" && team.acceptsTrial)
-  .sort((a, b) => a.priority - b.priority);
-
-const youthGroups = [
-  {
-    label: "A-Jugend",
-    ageGroup: "U19",
-    teams: youthTeams.filter((team) => team.ageGroup === "U19")
-  },
-  {
-    label: "B-Jugend",
-    ageGroup: "U17",
-    teams: youthTeams.filter((team) => team.ageGroup === "U17")
-  },
-  {
-    label: "C-Jugend",
-    ageGroup: "U15",
-    teams: youthTeams.filter((team) => team.ageGroup === "U15")
-  },
-  {
-    label: "D-Jugend",
-    ageGroup: "U13",
-    teams: youthTeams.filter((team) => team.ageGroup === "U13")
-  },
-  {
-    label: "E-Jugend",
-    ageGroup: "U11",
-    teams: youthTeams.filter((team) => team.ageGroup === "U11")
-  },
-  {
-    label: "F-Jugend",
-    ageGroup: "U9",
-    teams: youthTeams.filter((team) => team.ageGroup === "U9")
-  },
-  {
-    label: "G-Jugend",
-    ageGroup: "U7",
-    teams: youthTeams.filter((team) => team.ageGroup === "U7")
-  }
-];
+const mailHref =
+  "mailto:anfrage@polizei-sv-duesseldorf.de?subject=Anfrage%20Fu%C3%9Fball-Probetraining%20PSV%20D%C3%BCsseldorf";
 ---
 
-<Layout title="Fußball Probetraining | PSV Düsseldorf">
-  <section class="section football-trial-hero">
+<Layout
+  title="Fußball-Probetraining"
+  description="Fußball-Probetraining beim PSV Düsseldorf anfragen: Angaben, Ablauf und passende Mannschaft finden."
+>
+  <section class="section trial-hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Fußball Probetraining</p>
-
-        <h1>Probetraining beim PSV Düsseldorf anfragen</h1>
-
+        <p class="eyebrow">Fußball-Probetraining</p>
+        <h1>Anfrage richtig zuordnen lassen</h1>
         <p class="intro">
-          Der Einstieg in die Fußballabteilung läuft strukturiert über die passende Altersklasse
-          oder Mannschaft. So kann die Anfrage später direkt dem richtigen Team zugeordnet werden.
+          Die Nachfrage ist hoch und die Plätze sind begrenzt. Eine Anfrage ist möglich,
+          die Teilnahme wird aber erst nach Rückmeldung der zuständigen Mannschaft bestätigt.
         </p>
-
-        <div class="hero-actions">
-          <a class="button primary" href="mailto:anfrage@polizei-sv-duesseldorf.de">
-            Anfrage per E-Mail senden
-          </a>
-
-          <a class="button secondary" href="/psv-duesseldorf-website/fussball/">
-            Zurück zum Fußballbereich
-          </a>
+        <div class="actions">
+          <a class="button primary" href={mailHref}>Anfrage per E-Mail starten</a>
+          <a class="button secondary" href={withBase("/fussball/")}>Zu den Mannschaften</a>
         </div>
       </div>
-
-      <div class="hero-card">
-        <span>{seniorTeams.length + youthTeams.length}</span>
-        <strong>Teams mit Probetrainingsoption</strong>
-        <p>Aktuelle Teamdaten werden vor dem Livegang final geprüft.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="football-anchor-bar">
-    <div class="container anchor-inner">
-      <a href="#ablauf">Ablauf</a>
-      <a href="#senioren">Senioren</a>
-      {youthGroups.map((group) => (
-        <a href={`#${group.ageGroup.toLowerCase()}`}>{group.label}</a>
-      ))}
-    </div>
-  </section>
-
-  <section id="ablauf" class="section">
-    <div class="container split-grid">
-      <article class="content-card">
-        <p class="eyebrow">Ablauf</p>
-        <h2>So läuft die Anfrage ab</h2>
-
-        <ol>
-          <li>Passende Altersklasse oder Mannschaft auswählen.</li>
-          <li>E-Mail mit Name, Geburtsjahr, Position und bisheriger Fußballerfahrung senden.</li>
-          <li>Rückmeldung vom Verein abwarten und Termin abstimmen.</li>
-        </ol>
-      </article>
-
-      <article class="content-card">
-        <p class="eyebrow">Angaben</p>
-        <h2>Was in die Anfrage gehört</h2>
-
-        <ul>
-          <li>Name des Spielers</li>
-          <li>Geburtsjahr</li>
-          <li>Telefonnummer der Eltern oder des Spielers</li>
-          <li>bisheriger Verein, falls vorhanden</li>
-          <li>gewünschte Mannschaft</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section id="senioren" class="section light-section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Senioren</p>
-        <h2>Seniorenbereich</h2>
-      </div>
-
-      <div class="team-grid">
-        {seniorTeams.map((team) => (
-          <a class="team-card" href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}>
-            <span>{team.ageGroup}</span>
-            <h3>{team.name}</h3>
-            <p>{team.description}</p>
-          </a>
-        ))}
-      </div>
+      <aside class="notice-card">
+        <strong>Bitte vollständig anfragen</strong>
+        <p>Je genauer die Angaben sind, desto schneller kann die Anfrage zugeordnet werden.</p>
+      </aside>
     </div>
   </section>
 
   <section class="section">
-    <div class="container age-group-stack">
+    <div class="container split-grid">
+      <article class="content-card">
+        <p class="eyebrow">Angaben</p>
+        <h2>Das gehört in die E-Mail</h2>
+        <ul>
+          <li>Vorname und Nachname</li>
+          <li>Geburtsdatum</li>
+          <li>bisherige Fußball- oder Vereinserfahrung</li>
+          <li>gewünschte Mannschaft, falls bekannt</li>
+          <li>Telefonnummer einer Kontaktperson</li>
+        </ul>
+      </article>
+      <article class="content-card">
+        <p class="eyebrow">Ablauf</p>
+        <h2>So geht es weiter</h2>
+        <ol>
+          <li>Anfrage an die zentrale Fußballadresse senden.</li>
+          <li>Die Abteilung prüft Mannschaft und Kapazität.</li>
+          <li>Erst nach Bestätigung einen Trainingstermin wahrnehmen.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <div class="container section-head">
+      <p class="eyebrow">Mannschaften</p>
+      <h2>Passende Altersklasse finden</h2>
+    </div>
+    <div class="container team-block">
+      <div>
+        <h3>Senioren</h3>
+        <div class="team-grid">
+          {seniorTeams.map((team) => (
+            <a class="team-card" href={withBase(`/fussball/teams/${team.slug}/`)}>
+              <span>{team.ageGroup}</span>
+              <strong>{team.name}</strong>
+            </a>
+          ))}
+        </div>
+      </div>
       {youthGroups.map((group) => (
-        <section id={group.ageGroup.toLowerCase()} class="age-group">
-          <div class="age-group-head">
-            <div>
-              <p class="eyebrow">{group.ageGroup}</p>
-              <h2>{group.label}</h2>
-            </div>
-
-            <span>{group.teams.length} Teams</span>
-          </div>
-
+        <div>
+          <h3>{group.ageGroup}</h3>
           <div class="team-grid">
             {group.teams.map((team) => (
-              <a class="team-card" href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}>
-                <span>{team.ageGroup}</span>
-                <h3>{team.name}</h3>
-                <p>{team.description}</p>
+              <a class="team-card" href={withBase(`/fussball/teams/${team.slug}/`)}>
+                <span>Jahrgang {team.birthYears}</span>
+                <strong>{team.name}</strong>
               </a>
             ))}
           </div>
-        </section>
+        </div>
       ))}
     </div>
   </section>
-  <section class="section light-section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Mannschaften</p>
-        <h2>Teams mit Probetraining</h2>
-      </div>
 
-      <div class="trial-team-grid">
-        {trialTeams.map((team) => (
-          <a class="trial-team-card" href={`/psv-duesseldorf-website/fussball/teams/${team.slug}/`}>
-            <span>{team.ageGroup}</span>
-            <strong>{team.name}</strong>
-            <p>{team.trainingDays.join(" • ")}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
   <section class="section">
-    <div class="container">
-      <article class="request-card">
-        <p class="eyebrow">Anfrage vorbereiten</p>
-        <h2>Diese Angaben helfen bei der Einordnung</h2>
-
-        <ul class="request-list">
-          <li>Name des Spielers oder der Spielerin</li>
-          <li>Geburtsjahr</li>
-          <li>Gewünschte Mannschaft oder Altersklasse</li>
-          <li>Bisheriger Verein oder bisherige Fußballerfahrung</li>
-          <li>Position, falls bekannt</li>
-          <li>Kontaktdaten der Eltern oder Kontaktperson</li>
-          <li>Möglicher Zeitraum für ein Probetraining</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-  <section class="section light-section">
-    <div class="container">
-      <article class="trial-contact-card">
-        <p class="eyebrow">Nächster Schritt</p>
-        <h2>Probetraining anfragen</h2>
-        <p>
-          Nutze für die erste Anfrage die zentrale Fußball-Kontaktadresse und sende die Angaben aus der Checkliste mit.
-        </p>
-        <a class="button primary" href="mailto:anfrage@polizei-sv-duesseldorf.de?subject=Anfrage%20Probetraining%20Fu%C3%9Fball%20PSV%20D%C3%BCsseldorf">
-          Anfrage per E-Mail starten
-        </a>
-      </article>
+    <div class="container final-card">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Spielanfragen und Probetraining</h2>
+      <p>Die zentrale Kontaktadresse der Fußballabteilung lautet:</p>
+      <a href={mailHref}>anfrage@polizei-sv-duesseldorf.de</a>
     </div>
   </section>
 </Layout>
 
 <style>
-  .football-trial-hero {
-    background:
-      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
-      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+  .trial-hero {
+    background: linear-gradient(135deg, #ffffff, #f2f8ee);
   }
-
-  .hero-grid {
+  .hero-grid,
+  .split-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 36px;
     align-items: center;
   }
-
-  .hero-card,
-  .content-card,
-  .team-card,
-  .age-group-head {
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
+  .split-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
-
-  .hero-card span {
-    display: block;
-    color: var(--accent-strong);
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1;
-  }
-
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 900;
-    text-transform: uppercase;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
-
   h1 {
-    max-width: 900px;
-    font-size: clamp(42px, 7vw, 78px);
+    margin: 16px 0 24px;
+    font-size: clamp(44px, 7vw, 78px);
     line-height: 0.96;
-    margin: 18px 0 24px;
   }
-
   .intro,
-  .hero-card p,
-  .content-card li,
-  .team-card p {
+  .notice-card p,
+  .final-card p {
     color: var(--muted);
   }
-
-  .intro {
-    max-width: 740px;
-    font-size: 1.15rem;
-  }
-
-  .hero-actions,
-  .anchor-inner {
+  .actions {
     display: flex;
-    gap: 14px;
     flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
   }
-
-  .hero-actions {
-    margin-top: 30px;
-  }
-
   .button {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     min-height: 48px;
+    align-items: center;
     padding: 0 22px;
     border-radius: 999px;
-    text-decoration: none;
     font-weight: 900;
+    text-decoration: none;
   }
-
   .primary {
     background: var(--accent);
     color: #ffffff;
   }
-
   .secondary {
     border: 1px solid var(--accent);
+    color: var(--accent-strong);
+  }
+  .notice-card,
+  .content-card,
+  .team-card,
+  .final-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     background: #ffffff;
-    color: var(--accent-strong);
+    box-shadow: var(--shadow);
   }
-
-  .football-anchor-bar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255, 255, 255, 0.92);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(14px);
+  li {
+    margin-bottom: 8px;
   }
-
-  .anchor-inner {
-    overflow-x: auto;
-    padding: 14px 0;
-  }
-
-  .anchor-inner a {
-    white-space: nowrap;
-    padding: 10px 16px;
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--accent-strong);
-    font-weight: 900;
-    text-decoration: none;
-  }
-
-  .split-grid,
-  .team-grid {
-    display: grid;
-    gap: 24px;
-  }
-
-  .split-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .team-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .team-card {
-    color: inherit;
-    text-decoration: none;
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease;
-  }
-
-  .team-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-
-  .team-card span,
-  .age-group-head > span {
-    display: inline-flex;
-    margin-bottom: 16px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(127, 194, 65, 0.12);
-    color: var(--accent-strong);
-    font-weight: 900;
-  }
-
   .light-section {
     background: var(--surface);
   }
-
   .section-head {
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
-
-  .age-group-stack {
+  .team-block {
     display: grid;
-    gap: 44px;
+    gap: 34px;
   }
-
-  .age-group {
-    scroll-margin-top: 96px;
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
-
-  .age-group-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    align-items: center;
-    margin-bottom: 24px;
+  .team-card {
+    display: grid;
+    gap: 8px;
+    padding: 20px;
+    color: inherit;
+    text-decoration: none;
   }
-
-  ol,
-  ul {
-    padding-left: 20px;
-    margin-bottom: 0;
+  .team-card span {
+    color: var(--accent-strong);
+    font-size: 0.85rem;
+    font-weight: 900;
   }
-
-  @media (max-width: 980px) {
+  .final-card a {
+    color: var(--accent-strong);
+    font-size: 1.1rem;
+    font-weight: 900;
+  }
+  @media (max-width: 900px) {
     .hero-grid,
     .split-grid,
     .team-grid {
       grid-template-columns: 1fr;
     }
-
-    .age-group-head {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-  .trial-team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .trial-team-card {
-    padding: 24px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .trial-team-card span {
-    display: inline-flex;
-    margin-bottom: 12px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(127, 194, 65, 0.12);
-    color: var(--accent-strong);
-    font-weight: 900;
-  }
-
-  .trial-team-card p {
-    color: var(--muted);
-  }
-
-  @media (max-width: 980px) {
-    .trial-team-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .request-card {
-    padding: 30px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .request-list {
-    display: grid;
-    gap: 12px;
-    margin: 22px 0 0;
-    padding-left: 20px;
-    color: var(--muted);
-    font-weight: 700;
-  }
-  .trial-contact-card {
-    padding: 34px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .trial-contact-card p {
-    color: var(--muted);
   }
 </style>

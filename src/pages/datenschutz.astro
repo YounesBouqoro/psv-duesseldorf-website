@@ -1,84 +1,104 @@
-﻿---
+---
 import Layout from "../components/layout/Layout.astro";
 ---
 
-<Layout title="Datenschutz">
+<Layout title="Datenschutz" description="Datenschutzerklärung für die Website des Polizei-Sport-Verein Düsseldorf e.V.">
   <section class="section page-hero">
     <div class="container">
       <p class="eyebrow">Rechtliches</p>
-      <h1>Datenschutz</h1>
-      <p class="intro">
-        Die Datenschutzerklärung wird vor dem finalen Launch aktualisiert und auf die neue technische Website-Struktur angepasst.
-      </p>
+      <h1>Datenschutzerklärung</h1>
+      <p class="intro">Informationen zur Verarbeitung personenbezogener Daten auf dieser statischen Website.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container legal-grid">
-      <article class="legal-card">
-        <h2>Verantwortlichkeit</h2>
+    <div class="container legal-content">
+      <section>
+        <h2>1. Verantwortlicher</h2>
         <p>
-          Die verantwortliche Stelle und Kontaktdaten werden nach finaler Prüfung ergänzt.
+          Polizei-Sport-Verein Düsseldorf e.V.<br />
+          Ernst-Poensgen-Allee 60, 40629 Düsseldorf<br />
+          Telefon: 0211 / 73 28 30 65<br />
+          E-Mail: <a href="mailto:contact@polizei-sv-duesseldorf.de">contact@polizei-sv-duesseldorf.de</a>
         </p>
-      </article>
+      </section>
 
-      <article class="legal-card">
-        <h2>Kontaktformular & Kommunikation</h2>
+      <section>
+        <h2>2. Hosting über GitHub Pages</h2>
         <p>
-          Sobald Formulare oder externe Dienste genutzt werden, müssen diese sauber in der Datenschutzerklärung berücksichtigt werden.
+          Diese Website wird als statische Website über GitHub Pages bereitgestellt. Anbieter ist
+          GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.
+          Beim Aufruf einer GitHub-Pages-Website wird die IP-Adresse des Besuchers aus
+          Sicherheitsgründen durch GitHub protokolliert und gespeichert.
         </p>
-      </article>
+        <p>
+          Weitere Informationen:
+          <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noreferrer">Datenerhebung bei GitHub Pages</a>
+          und
+          <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noreferrer">GitHub-Datenschutzerklärung</a>.
+        </p>
+      </section>
 
-      <article class="legal-card">
-        <h2>Technische Dienste</h2>
+      <section>
+        <h2>3. Kontaktaufnahme</h2>
         <p>
-          Hosting, Analytics, Cookies und eingebundene Drittanbieter werden vor Veröffentlichung geprüft und dokumentiert.
+          Bei einer Kontaktaufnahme per E-Mail oder Telefon werden die übermittelten Angaben
+          ausschließlich zur Bearbeitung der Anfrage und für mögliche Anschlussfragen verarbeitet.
+          Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind und
+          keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
-      </article>
+      </section>
+
+      <section>
+        <h2>4. Cookies, Formulare und Analyse</h2>
+        <p>
+          Auf dieser Website werden aktuell keine eigenen Cookies gesetzt, kein eigenes
+          Kontaktformular betrieben und keine Analyse- oder Trackingdienste eingebunden.
+          Verlinkungen zu E-Mail-Programmen und externen Websites werden erst nach einer aktiven
+          Auswahl durch den Nutzer geöffnet.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Externe Links</h2>
+        <p>
+          Für externe Websites gelten die Datenschutzbestimmungen der jeweiligen Anbieter.
+          Dazu gehören insbesondere GitHub, Verbände, Karten- und Downloadangebote.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Rechte betroffener Personen</h2>
+        <p>
+          Betroffene Personen haben im Rahmen der gesetzlichen Voraussetzungen insbesondere Rechte
+          auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit
+          und Widerspruch. Erteilte Einwilligungen können mit Wirkung für die Zukunft widerrufen werden.
+        </p>
+        <p>Anfragen können an <a href="mailto:contact@polizei-sv-duesseldorf.de">contact@polizei-sv-duesseldorf.de</a> gerichtet werden.</p>
+      </section>
+
+      <section>
+        <h2>7. Beschwerderecht</h2>
+        <p>
+          Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br />
+          Postfach 20 04 44, 40102 Düsseldorf<br />
+          Telefon: 0211 / 38424-0<br />
+          E-Mail: <a href="mailto:poststelle@ldi.nrw.de">poststelle@ldi.nrw.de</a>
+        </p>
+      </section>
+
+      <p class="status">Stand: 17. August 2026</p>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
-  }
-
-  .eyebrow {
-    color: var(--accent-strong);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  h1 {
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 0.98;
-    margin: 16px 0 24px;
-  }
-
-  .intro,
-  .legal-card p {
-    color: var(--muted);
-  }
-
-  .legal-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .legal-card {
-    padding: 30px;
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    background: #ffffff;
-    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
-  }
-
-  @media (max-width: 900px) {
-    .legal-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+  .page-hero { background: linear-gradient(135deg, #ffffff, #f2f8ee); }
+  .eyebrow { color: var(--accent-strong); font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: 16px 0 20px; font-size: clamp(44px, 7vw, 76px); }
+  .intro, .legal-content p { color: var(--muted); }
+  .legal-content { display: grid; gap: 22px; max-width: 900px; }
+  .legal-content section { padding: 30px; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+  .legal-content a { color: var(--accent-strong); font-weight: 800; }
+  .status { font-weight: 800; }
 </style>

@@ -1,58 +1,44 @@
-﻿---
+---
 import Layout from "../../../components/layout/Layout.astro";
-import { footballTeams } from "../../../data/footballTeams";
-import { footballCoaches } from "../../../data/footballCoaches";
-import { footballTrainingSchedule } from "../../../data/footballTrainingSchedule";
+import { footballTeams, type FootballTeam } from "../../../data/footballTeams";
+import { withBase } from "../../../utils/paths";
 
 export async function getStaticPaths() {
   return footballTeams.map((team) => ({
-    params: {
-      slug: team.slug
-    },
-    props: {
-      team
-    }
+    params: { slug: team.slug },
+    props: { team }
   }));
 }
 
+interface Props {
+  team: FootballTeam;
+}
+
 const { team } = Astro.props;
-
-const teamCoaches = footballCoaches.filter((coach) => coach.teams.includes(team.slug));
-const teamTrainingSlots = footballTrainingSchedule.filter((slot) => slot.teamSlug === team.slug);
-
 const relatedTeams = footballTeams
   .filter((item) => item.ageGroup === team.ageGroup && item.slug !== team.slug)
   .sort((a, b) => a.priority - b.priority);
+
+const mailHref = `mailto:${team.contactMail}?subject=Anfrage%20${encodeURIComponent(team.name)}%20PSV%20D%C3%BCsseldorf`;
 ---
 
-<Layout title={`${team.name} Fußball | PSV Düsseldorf`}>
+<Layout
+  title={`${team.name} Fußball`}
+  description={team.description}
+>
   <section class="section team-hero">
     <div class="container breadcrumb">
-      <a href="/psv-duesseldorf-website/fussball/">Fußball</a>
+      <a href={withBase("/fussball/")}>Fußball</a>
       <span>/</span>
       <span>{team.name}</span>
     </div>
-
     <div class="container">
-      <div class="hero-labels">
-        <p class="eyebrow">{team.category}</p>
-        <span class="status-badge">Daten vor Livegang prüfen</span>
-      </div>
-
+      <p class="eyebrow">{team.category} · {team.ageGroup}</p>
       <h1>{team.name}</h1>
-
-      <p class="intro">
-        {team.description}
-      </p>
-
-      <div class="hero-actions">
-        <a class="button primary" href="/psv-duesseldorf-website/fussball/probetraining/">
-          Probetraining anfragen
-        </a>
-
-        <a class="button secondary" href="/psv-duesseldorf-website/fussball/">
-          Alle Mannschaften
-        </a>
+      <p class="intro">{team.description}</p>
+      <div class="actions">
+        <a class="button primary" href={mailHref}>Anfrage senden</a>
+        <a class="button secondary" href={withBase("/fussball/probetraining/")}>Probetraining-Ablauf</a>
       </div>
     </div>
   </section>
@@ -60,368 +46,149 @@ const relatedTeams = footballTeams
   <section class="section">
     <div class="container info-grid">
       <article class="info-card">
-        <h2>Altersklasse</h2>
-        <p>{team.ageGroup}</p>
+        <p class="eyebrow">Mannschaft</p>
+        <h2>{team.ageGroup}</h2>
+        {team.birthYears && <p>Veröffentlichte Jahrgänge: {team.birthYears}</p>}
       </article>
-
       <article class="info-card">
-        <h2>Trainingstage</h2>
-        <p>{team.trainingDays.join(" • ")}</p>
-      </article>
-
-      <article class="info-card">
-        <h2>Trainingsort</h2>
+        <p class="eyebrow">Sportanlage</p>
+        <h2>Grafenberg</h2>
         <p>{team.location}</p>
+      </article>
+      <article class="info-card">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Zentrale Anfrage</h2>
+        <a href={mailHref}>{team.contactMail}</a>
       </article>
     </div>
   </section>
 
   <section class="section light-section">
-    <div class="container split-grid">
-      <article class="content-card">
-        <p class="eyebrow">Trainerteam</p>
-
-        <h2>Betreuung der Mannschaft</h2>
-
-        <ul>
-          {team.coaches.map((coach) => (
-            <li>{coach}</li>
-          ))}
-        </ul>
-      </article>
-
-      <article class="content-card">
-        <p class="eyebrow">Probetraining</p>
-
-        <h2>{team.acceptsTrial ? "Probetraining anfragen" : "Kontakt aufnehmen"}</h2>
-
-        <p>
-          Für Anfragen zum Probetraining oder zur Mannschaft bitte die Fußball-Probetrainingsseite nutzen.
-        </p>
-
-        <a class="button primary" href="/psv-duesseldorf-website/fussball/probetraining/">
-          Probetraining anfragen
-        </a>
-      </article>
+    <div class="container capacity-card">
+      <p class="eyebrow">Wichtiger Hinweis</p>
+      <h2>Teilnahme erst nach Bestätigung</h2>
+      <p>
+        Aufgrund der hohen Nachfrage sind die Kapazitäten im Jugendbereich begrenzt.
+        Bitte nicht unangemeldet zum Training erscheinen. Die Fußballabteilung ordnet
+        die Anfrage zu und meldet sich mit den nächsten Schritten.
+      </p>
     </div>
   </section>
-
-  {team.gallery && team.gallery.length > 0 && (
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Bilder</p>
-          <h2>Eindrücke der Mannschaft</h2>
-        </div>
-
-        <div class="gallery-grid">
-          {team.gallery.map((image) => (
-            <img src={image} alt={`Eindruck ${team.name} PSV Düsseldorf`} loading="lazy" />
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 
   {relatedTeams.length > 0 && (
     <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Weitere Teams</p>
-          <h2>Weitere Mannschaften in {team.ageGroup}</h2>
-        </div>
-
-        <div class="related-grid">
-          {relatedTeams.map((related) => (
-            <a class="related-card" href={`/psv-duesseldorf-website/fussball/teams/${related.slug}/`}>
-              <span>{related.ageGroup}</span>
-              <strong>{related.name}</strong>
-              <p>{related.description}</p>
-            </a>
-          ))}
-        </div>
+      <div class="container section-head">
+        <p class="eyebrow">Gleiche Altersklasse</p>
+        <h2>Weitere Teams</h2>
+      </div>
+      <div class="container related-grid">
+        {relatedTeams.map((related) => (
+          <a class="related-card" href={withBase(`/fussball/teams/${related.slug}/`)}>
+            <span>{related.ageGroup}</span>
+            <strong>{related.name}</strong>
+          </a>
+        ))}
       </div>
     </section>
   )}
-
-  <section class="section light-section">
-    <div class="container steps-grid">
-      <article class="step-card">
-        <span>01</span>
-        <h2>Anfrage senden</h2>
-        <p>
-          Nutze die Probetrainingsseite und gib Name, Geburtsjahr, Erfahrung und gewünschte Mannschaft an.
-        </p>
-      </article>
-
-      <article class="step-card">
-        <span>02</span>
-        <h2>Rückmeldung erhalten</h2>
-        <p>
-          Das Trainer- oder Organisationsteam prüft die Anfrage und stimmt einen passenden Termin ab.
-        </p>
-      </article>
-
-      <article class="step-card">
-        <span>03</span>
-        <h2>Mittrainieren</h2>
-        <p>
-          Beim Probetraining lernst du Mannschaft, Trainerteam und die Abläufe beim PSV Düsseldorf kennen.
-        </p>
-      </article>
-    </div>
-  </section>
 </Layout>
 
 <style>
   .team-hero {
-    background:
-      radial-gradient(circle at top right, rgba(127, 194, 65, 0.18), transparent 34%),
-      linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
+    background: linear-gradient(135deg, #ffffff, #f2f8ee);
   }
-
   .breadcrumb {
     display: flex;
     gap: 10px;
-    align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     color: var(--muted);
-    font-size: 0.95rem;
-    font-weight: 700;
   }
-
-  .breadcrumb a {
+  .breadcrumb a,
+  .info-card a {
     color: var(--accent-strong);
-    text-decoration: none;
+    font-weight: 900;
   }
-
-  .hero-labels,
-  .team-cover {
-    margin-top: 34px;
-    overflow: hidden;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .team-cover img {
-    display: block;
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .team-cover {
-    margin-top: 34px;
-    overflow: hidden;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    box-shadow: var(--shadow);
-  }
-
-  .team-cover img {
-    display: block;
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-  }
-
-  .hero-actions {
-    margin-top: 30px;
-  }
-
   .eyebrow {
     color: var(--accent-strong);
     font-weight: 900;
-    text-transform: uppercase;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
-
   h1 {
-    font-size: clamp(42px, 7vw, 78px);
+    margin: 16px 0 24px;
+    font-size: clamp(48px, 8vw, 86px);
     line-height: 0.96;
-    margin: 18px 0 24px;
   }
-
   .intro {
-    max-width: 720px;
+    max-width: 760px;
     color: var(--muted);
     font-size: 1.15rem;
   }
-
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 12px;
-    border-radius: 999px;
-    background: #fff7db;
-    color: #8a6500;
-    font-size: 0.82rem;
-    font-weight: 900;
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
   }
-
   .button {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     min-height: 48px;
+    align-items: center;
     padding: 0 22px;
     border-radius: 999px;
-    text-decoration: none;
     font-weight: 900;
+    text-decoration: none;
   }
-
   .primary {
     background: var(--accent);
     color: #ffffff;
   }
-
   .secondary {
     border: 1px solid var(--accent);
-    background: #ffffff;
     color: var(--accent-strong);
   }
-
   .info-grid,
-  .split-grid,
-  .steps-grid,
-  .gallery-grid,
   .related-grid {
-' `
--replace '\.related-card \{', @'
-.gallery-grid img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    background: #ffffff;
-  }
-
-  .related-card {
     display: grid;
-    gap: 24px;
-  }
-
-  .info-grid,
-  .steps-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
   }
-
-  .split-grid,
-  .gallery-grid,
-  .related-grid {
-' `
--replace '\.related-card \{', @'
-.gallery-grid img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    background: #ffffff;
-  }
-
-  .related-card {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .info-card,
-  .content-card,
-  .step-card,
+  .capacity-card,
   .related-card {
-    padding: 30px;
-    border-radius: var(--radius);
+    padding: 28px;
     border: 1px solid var(--border);
+    border-radius: var(--radius);
     background: #ffffff;
     box-shadow: var(--shadow);
   }
-
+  .info-card p,
+  .capacity-card p {
+    color: var(--muted);
+  }
   .light-section {
     background: var(--surface);
   }
-
-  .section-head {
-    margin-bottom: 30px;
+  .capacity-card {
+    max-width: 820px;
   }
-
+  .section-head {
+    margin-bottom: 24px;
+  }
   .related-card {
+    display: grid;
+    gap: 8px;
     color: inherit;
     text-decoration: none;
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease;
   }
-
-  .related-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-
-  .related-card span,
-  .step-card span {
-    display: inline-flex;
-    margin-bottom: 18px;
+  .related-card span {
     color: var(--accent-strong);
     font-weight: 900;
   }
-
-  .related-card span {
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(127, 194, 65, 0.12);
-  }
-
-  .step-card span {
-    font-size: 1.8rem;
-  }
-
-  .info-card p,
-  .content-card p,
-  .content-card li,
-  .step-card p,
-  .related-card p {
-    color: var(--muted);
-  }
-
-  ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 980px) {
+  @media (max-width: 850px) {
     .info-grid,
-    .split-grid,
-    .steps-grid,
-    .gallery-grid,
-  .related-grid {
-' `
--replace '\.related-card \{', @'
-.gallery-grid img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    background: #ffffff;
-  }
-
-  .related-card {
+    .related-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
-

@@ -1,6 +1,7 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "../utils/paths";
 
 const sportarten = await getCollection("sportarten");
 
@@ -42,7 +43,7 @@ const sortedSports = sportarten.sort((a, b) =>
 
                 <a
                   class="sport-link"
-                  href={`/psv-duesseldorf-website/sportarten/${sport.slug}/`}
+                  href={withBase(`/sportarten/${sport.id}/`)}
                 >
                   Mehr erfahren
                 </a>
