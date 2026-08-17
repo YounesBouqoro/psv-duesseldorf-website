@@ -1,5 +1,6 @@
-﻿import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const sportarten = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/sportarten" }),
@@ -13,7 +14,8 @@ const sportarten = defineCollection({
     contact: z.object({
       name: z.string(),
       role: z.string(),
-      email: z.string().email().optional()
+      email: z.email().optional(),
+      phone: z.string().optional()
     }).optional(),
     training: z.array(z.object({
       groupName: z.string(),
@@ -22,7 +24,11 @@ const sportarten = defineCollection({
       endTime: z.string(),
       location: z.string(),
       notes: z.string().optional()
-    })).default([])
+    })).default([]),
+    trialAvailability: z.enum(["available", "contact", "unavailable"]).default("contact"),
+    trialNote: z.string().optional(),
+    sourceUrl: z.url(),
+    lastVerified: z.string()
   })
 });
 

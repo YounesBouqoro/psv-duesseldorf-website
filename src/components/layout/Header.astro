@@ -1,27 +1,28 @@
 ﻿---
 import navigation from "../../data/navigation.json";
+import { withBase } from "../../utils/paths";
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/psv-duesseldorf-website/">
-      <img src="/psv-duesseldorf-website/brand/logo.png" alt="PSV Düsseldorf Logo" width="48" height="48" />
+    <a class="brand" href={withBase("/")}>
+      <img src={withBase("/brand/logo.png")} alt="Logo des PSV Düsseldorf" width="48" height="48" />
       <span>PSV Düsseldorf</span>
     </a>
 
     <nav class="desktop-nav" aria-label="Hauptnavigation">
       {navigation.main.map((item) => (
-        <a href={`/psv-duesseldorf-website${item.href}`}>{item.label}</a>
+        <a href={withBase(item.href)}>{item.label}</a>
       ))}
     </nav>
 
-    <a class="header-cta" href="/psv-duesseldorf-website/fussball/probetraining/">Probetraining</a>
+    <a class="header-cta" href={withBase("/probetraining/")}>Probetraining</a>
 
     <details class="mobile-menu">
       <summary>Menü</summary>
       <nav aria-label="Mobile Hauptnavigation">
         {navigation.main.map((item) => (
-          <a href={`/psv-duesseldorf-website${item.href}`}>{item.label}</a>
+          <a href={withBase(item.href)}>{item.label}</a>
         ))}
       </nav>
     </details>
@@ -155,4 +156,3 @@ import navigation from "../../data/navigation.json";
     }
   }
 </style>
-

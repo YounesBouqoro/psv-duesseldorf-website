@@ -1,22 +1,26 @@
-﻿---
+---
 title: "Gymnastik"
-shortDescription: "Bewegung, Gesundheit und Fitness in der Gruppe."
-category: "Fitness"
+shortDescription: "Gemeinsame Bewegung für Mobilität, Kraft und allgemeine Fitness."
+category: "Gesundheit & Fitness"
 featured: false
-targetGroups: ["Erwachsene", "Senioren"]
-tags: ["Gesundheit", "Fitness"]
+targetGroups: ["Erwachsene"]
+tags: ["Gesundheit", "Fitness", "Beweglichkeit"]
 contact:
-  name: "Ansprechpartner folgt"
-  role: "Abteilungsleitung"
+  name: "Peter Häßler"
+  role: "Ansprechpartner"
+  email: "gymnastik@polizei-sv-duesseldorf.de"
 training:
-  - groupName: "Trainingsgruppe"
-    weekday: "Wochentag folgt"
-    startTime: "00:00"
-    endTime: "00:00"
-    location: "SportstÃ¤tte folgt"
+  - groupName: "Gymnastik"
+    weekday: "Mittwoch"
+    startTime: "16:00"
+    endTime: "17:30"
+    location: "Polizeiwache Wersten, Kölner Landstraße 30, 40591 Düsseldorf"
+trialAvailability: "contact"
+trialNote: "Bitte den ersten Besuch vorab per E-Mail abstimmen."
+sourceUrl: "https://polizei-sv-duesseldorf.de/gymnastik/"
+lastVerified: "2026-08-17"
 ---
 
-Hier entsteht die Abteilungsseite fÃ¼r **Gymnastik**.
+Das Gymnastikangebot fördert Beweglichkeit, Kraft und allgemeines Wohlbefinden in einer festen Trainingsgruppe.
 
-Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
-
+Der veröffentlichte Jahresbeitrag für Erwachsene beträgt 88 Euro.

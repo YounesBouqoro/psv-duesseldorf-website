@@ -1,21 +1,21 @@
 ﻿# Fußball-Datenvorlage PSV Düsseldorf
 
-Diese Datei dient als interne Vorlage zur Pflege echter Vereinsdaten vor dem Livegang.
+Diese Datei dient als interne Vorlage zur Pflege bestätigter Mannschaftsdaten. Nicht freigegebene personenbezogene Daten und Bilder bleiben unveröffentlicht.
 
 ## Pro Mannschaft zu prüfen
 
 | Feld | Status | Hinweis |
 |---|---|---|
-| Teamname | Offen | z. B. C1, D2, 1. Mannschaft |
-| Altersklasse | Offen | z. B. U15, U13, Senioren |
-| Liga / Spielklasse | Offen | Nur eintragen, wenn final bestätigt |
-| Trainerteam | Offen | Namen nur nach Freigabe veröffentlichen |
-| Kontaktadresse | Offen | Bevorzugt Funktionsmail statt private Mail |
-| Trainingszeiten Sommer | Offen | Wochentag, Uhrzeit, Ort, Platz |
-| Trainingszeiten Winter | Offen | Falls abweichend |
-| Trainingsort | Offen | Adresse und Platzbezeichnung prüfen |
-| Probetraining möglich | Offen | Ja / Nein / Warteliste |
-| Mannschaftsfoto | Offen | Bildrechte und Freigabe klären |
+| Teamname | Prüfen | z. B. C1, D2, 1. Mannschaft |
+| Altersklasse | Prüfen | z. B. U15, U13, Senioren |
+| Liga / Spielklasse | Prüfen | Nur eintragen, wenn aktuell bestätigt |
+| Trainerteam | Prüfen | Namen nur nach Freigabe veröffentlichen |
+| Kontaktadresse | Prüfen | Bevorzugt Funktionsmail statt private Mail |
+| Trainingszeiten Sommer | Prüfen | Wochentag, Uhrzeit, Ort, Platz |
+| Trainingszeiten Winter | Prüfen | Falls abweichend |
+| Trainingsort | Prüfen | Adresse und Platzbezeichnung bestätigen |
+| Probetraining möglich | Prüfen | Ja / Nein / Warteliste |
+| Mannschaftsfoto | Prüfen | Bildrechte und Freigabe klären |
 | Galerie | Optional | Nur freigegebene Bilder nutzen |
 | Interne Notiz | Optional | Nicht veröffentlichen |
 
@@ -34,3 +34,4 @@ Probetraining:
 Bild vorhanden:
 Freigabe erteilt:
 Interne Notiz:
+```

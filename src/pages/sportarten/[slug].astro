@@ -1,6 +1,7 @@
 ﻿---
 import Layout from "../../components/layout/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { withBase } from "../../utils/paths";
 
 export async function getStaticPaths() {
   const sportarten = await getCollection("sportarten");
@@ -16,12 +17,22 @@ const { Content } = await render(sport);
 
 const trainingItems = sport.data.training ?? [];
 const contact = sport.data.contact;
+const trialLabels = {
+  available: "Probetraining möglich",
+  contact: "Vorherige Abstimmung erforderlich",
+  unavailable: "Aktuell kein Probetraining"
+};
+const verifiedDate = new Intl.DateTimeFormat("de-DE", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+}).format(new Date(`${sport.data.lastVerified}T12:00:00`));
 ---
 
-<Layout title={sport.data.title}>
+<Layout title={sport.data.title} description={sport.data.shortDescription}>
   <section class="section sport-hero">
     <div class="container">
-      <a class="back-link" href="/psv-duesseldorf-website/sportarten/">← Zurück zu allen Sportarten</a>
+      <a class="back-link" href={withBase("/sportarten/")}>← Zurück zu allen Sportarten</a>
       <p class="eyebrow">{sport.data.category}</p>
       <h1>{sport.data.title}</h1>
       <p class="intro">{sport.data.shortDescription}</p>
@@ -46,6 +57,7 @@ const contact = sport.data.contact;
                 <h3>{item.groupName}</h3>
                 <p><strong>{item.weekday}</strong><br />{item.startTime}–{item.endTime}</p>
                 <p>{item.location}</p>
+                {item.notes && <p class="note">{item.notes}</p>}
               </div>
             ))}
           </div>
@@ -56,14 +68,27 @@ const contact = sport.data.contact;
             <h2>Ansprechpartner</h2>
             <p><strong>{contact.name}</strong><br />{contact.role}</p>
             {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+            {contact.phone && <p><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></p>}
           </div>
         )}
 
         <div class="info-card">
+          <p class={`availability ${sport.data.trialAvailability}`}>
+            {trialLabels[sport.data.trialAvailability]}
+          </p>
           <h2>Interesse?</h2>
-          <p>Du möchtest mehr erfahren oder ein Probetraining anfragen?</p>
-          <a class="button" href="/psv-duesseldorf-website/probetraining/">Probetraining anfragen</a>
+          {sport.data.trialNote && <p>{sport.data.trialNote}</p>}
+          {
+            sport.data.trialAvailability !== "unavailable" && (
+              <a class="button" href={withBase("/probetraining/")}>Probetraining anfragen</a>
+            )
+          }
         </div>
+
+        <p class="verified">
+          Angaben zuletzt geprüft am {verifiedDate} ·
+          <a href={sport.data.sourceUrl} target="_blank" rel="noreferrer"> Originalquelle</a>
+        </p>
       </aside>
     </div>
   </section>
@@ -125,6 +150,32 @@ const contact = sport.data.contact;
     padding-top: 18px;
     margin-top: 18px;
     border-top: 1px solid var(--border);
+  }
+
+  .note,
+  .verified {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .availability {
+    display: inline-flex;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #fff4d8;
+    color: #765500;
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
+
+  .availability.unavailable {
+    background: #fde8e8;
+    color: #9b1c1c;
+  }
+
+  .verified {
+    margin: 0;
+    padding: 0 4px;
   }
 
   .button {

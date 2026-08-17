@@ -1,5 +1,6 @@
 ﻿---
 import Layout from "../components/layout/Layout.astro";
+import { withBase } from "../utils/paths";
 
 const opportunities = [
   {
@@ -32,17 +33,17 @@ const benefits = [
         <h1>Sponsoring beim PSV Düsseldorf</h1>
         <p class="intro">
           Sponsoring unterstützt den Verein, die Abteilungen und den sportlichen Betrieb.
-          Die neue Website schafft dafür eine klare Anlaufstelle für Unternehmen, Förderer und Partner.
+          Unternehmen, Förderer und lokale Partner können sich mit individuellen Ideen an die Geschäftsstelle wenden.
         </p>
 
-        <a class="button primary" href="/psv-duesseldorf-website/kontakt/">Kontakt aufnehmen</a>
+        <a class="button primary" href={withBase("/kontakt/")}>Kontakt aufnehmen</a>
       </div>
 
       <aside class="status-card">
-        <p class="status-label">Nächster Schritt</p>
-        <h2>Sponsoring-Angebote konkretisieren</h2>
+        <p class="status-label">Anfrage</p>
+        <h2>Partnerschaft besprechen</h2>
         <p>
-          Pakete, Ansprechpartner, Platzierungen und bestehende Partner müssen vor Veröffentlichung final abgestimmt werden.
+          Ziele, Umfang und mögliche Leistungen werden passend zum Vorhaben persönlich abgestimmt.
         </p>
       </aside>
     </div>

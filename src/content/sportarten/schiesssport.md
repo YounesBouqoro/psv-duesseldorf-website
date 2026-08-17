@@ -1,22 +1,27 @@
-﻿---
-title: "SchieÃŸsport"
-shortDescription: "PrÃ¤zision, Konzentration und verantwortungsvoller Sport."
-category: "Sonstige"
+---
+title: "Schießsport"
+shortDescription: "Präzision, Konzentration und verantwortungsvoller Wettkampfsport ab 18 Jahren."
+category: "Präzisionssport"
 featured: false
-targetGroups: ["Erwachsene"]
-tags: ["PrÃ¤zision"]
+targetGroups: ["Erwachsene ab 18 Jahren"]
+tags: ["Präzision", "Wettkampf", "Verantwortung"]
 contact:
-  name: "Ansprechpartner folgt"
-  role: "Abteilungsleitung"
+  name: "Schießsportabteilung"
+  role: "Abteilungs-Kontakt"
+  email: "schiesssport@polizei-sv-duesseldorf.de"
 training:
-  - groupName: "Trainingsgruppe"
-    weekday: "Wochentag folgt"
-    startTime: "00:00"
-    endTime: "00:00"
-    location: "SportstÃ¤tte folgt"
+  - groupName: "Sportschießen"
+    weekday: "Donnerstag"
+    startTime: "19:00"
+    endTime: "21:00"
+    location: "TuS-Nord, Eckenerstraße 49, Düsseldorf"
+    notes: "Teilnahme ab 18 Jahren."
+trialAvailability: "contact"
+trialNote: "Interessierte stimmen die Teilnahme vorab mit der Abteilung ab."
+sourceUrl: "https://polizei-sv-duesseldorf.de/schiesssport/"
+lastVerified: "2026-08-17"
 ---
 
-Hier entsteht die Abteilungsseite fÃ¼r **SchieÃŸsport**.
+Die Sportschützenabteilung wurde 1955 gegründet. Rund 30 Mitglieder treffen sich wöchentlich zum sportlichen Schießen und nehmen an Kreis-, Bezirks- und Landesmeisterschaften sowie an Rundenwettkämpfen teil.
 
-Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
-
+Der veröffentlichte Jahresbeitrag für Erwachsene beträgt 120 Euro.

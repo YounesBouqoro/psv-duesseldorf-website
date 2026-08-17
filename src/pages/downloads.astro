@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from "../components/layout/Layout.astro";
 
 const downloads = [
@@ -6,16 +6,16 @@ const downloads = [
     category: "Mitgliedschaft",
     items: [
       {
-        title: "Beitrittserklärung PSV Düsseldorf",
-        description: "Zentrales Formular für die Vereinsmitgliedschaft.",
-        href: "#",
-        status: "PDF noch hochladen"
+        title: "Beitrittserklärung",
+        description: "Formular mit SEPA-Mandat und veröffentlichter Beitragsübersicht.",
+        href: "https://polizei-sv-duesseldorf.de/wp-content/uploads/2022/01/PSV_Beitrittserklaerung_2022_online.pdf",
+        meta: "PDF · 2 Seiten"
       },
       {
-        title: "Satzung des PSV Düsseldorf",
-        description: "Offizielle Vereinssatzung.",
-        href: "#",
-        status: "PDF noch hochladen"
+        title: "Satzung",
+        description: "Satzung des Polizei-Sport-Verein Düsseldorf e.V.",
+        href: "https://polizei-sv-duesseldorf.de/wp-content/uploads/2020/06/Satzung_Polizei-Sport-Verein_Duesseldorf.pdf",
+        meta: "PDF · 9 Seiten"
       }
     ]
   },
@@ -24,9 +24,20 @@ const downloads = [
     items: [
       {
         title: "Antrag auf Spielberechtigung",
-        description: "Formular für den Fußball-Spielbetrieb.",
-        href: "#",
-        status: "PDF noch hochladen"
+        description: "Verbandsformular für die Fußball-Spielberechtigung.",
+        href: "https://polizei-sv-duesseldorf.de/wp-content/uploads/2021/09/wdfv-antrag_spielberechtigung_stand_06.01.2020_1.pdf",
+        meta: "PDF"
+      }
+    ]
+  },
+  {
+    category: "Kinderschutz",
+    items: [
+      {
+        title: "Kinder- und Jugendschutzkonzept",
+        description: "Vollständiges, am 26. März 2026 beschlossenes Schutzkonzept.",
+        href: "https://polizei-sv-duesseldorf.de/wp-content/uploads/2026/04/Kinderschutz-PSV.pdf",
+        meta: "PDF · 6 Seiten"
       }
     ]
   },
@@ -34,160 +45,57 @@ const downloads = [
     category: "Kurse",
     items: [
       {
-        title: "Anmeldung Selbstverteidigung für Frauen",
-        description: "Anmeldeformular für Kursangebote.",
-        href: "#",
-        status: "PDF noch hochladen"
-      }
-    ]
-  },
-  {
-    category: "Sportarten",
-    items: [
-      {
-        title: "Faustball Informationen",
-        description: "Informationsmaterial zur Abteilung Faustball.",
-        href: "#",
-        status: "Optional als HTML übertragen"
-      },
-      {
-        title: "Karate Trainingsinformationen",
-        description: "Informationen zu Training, Trainingsorten und Kinderkarate.",
-        href: "#",
-        status: "Optional als HTML übertragen"
-      },
-      {
-        title: "Hundesport Informationen",
-        description: "Materialien zu Agility, Obedience und Begleithundeprüfung.",
-        href: "#",
-        status: "Optional als HTML übertragen"
+        title: "Anmeldung Selbstverteidigung",
+        description: "Anmeldeformular für das Kursangebot Selbstverteidigung und Selbstbehauptung.",
+        href: "https://polizei-sv-duesseldorf.de/wp-content/uploads/2023/12/Polizei-Sport-Verein_Duesseldorf_Kurs_FSBK2024_Anmeldung.pdf",
+        meta: "PDF · vor Verwendung Termin prüfen"
       }
     ]
   }
 ];
 ---
 
-<Layout title="Downloads">
+<Layout title="Downloads" description="Formulare, Satzung und Schutzkonzept des PSV Düsseldorf.">
   <section class="section page-hero">
     <div class="container">
-      <p class="eyebrow">Servicebereich</p>
+      <p class="eyebrow">Service</p>
       <h1>Downloads</h1>
-      <p class="intro">
-        Hier werden zentrale Formulare, Vereinspapiere und Informationsmaterialien gebündelt.
-        Die Dateien werden im Relaunch sauber benannt, geprüft und thematisch sortiert.
-      </p>
+      <p class="intro">Zentrale Formulare und Vereinsdokumente aus der offiziellen PSV-Quelle.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container download-list">
-      {
-        downloads.map((group) => (
-          <section class="download-group">
-            <h2>{group.category}</h2>
-
-            <div class="download-grid">
-              {group.items.map((item) => (
-                <article class="download-card">
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <span>{item.status}</span>
-                  </div>
-
-                  <a href={item.href} class="download-link" aria-disabled="true">
-                    Download vorbereiten
-                  </a>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+      {downloads.map((group) => (
+        <section>
+          <h2>{group.category}</h2>
+          <div class="download-grid">
+            {group.items.map((item) => (
+              <article class="download-card">
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <span>{item.meta}</span>
+                </div>
+                <a href={item.href} target="_blank" rel="noreferrer">PDF öffnen</a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 100%);
-  }
-
-  .eyebrow {
-    color: var(--accent-strong);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  h1 {
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 0.98;
-    margin: 16px 0 24px;
-  }
-
-  .intro {
-    max-width: 760px;
-    color: var(--muted);
-    font-size: 1.15rem;
-  }
-
-  .download-list {
-    display: grid;
-    gap: 44px;
-  }
-
-  .download-group h2 {
-    margin-bottom: 20px;
-  }
-
-  .download-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .download-card {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 26px;
-    border: 1px solid var(--border);
-    border-radius: 26px;
-    background: #ffffff;
-    box-shadow: 0 16px 50px rgba(0,0,0,0.06);
-  }
-
-  .download-card p {
-    color: var(--muted);
-  }
-
-  .download-card span {
-    display: inline-flex;
-    margin-top: 8px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #f3f8ef;
-    color: var(--accent-strong);
-    font-size: 0.82rem;
-    font-weight: 800;
-  }
-
-  .download-link {
-    white-space: nowrap;
-    align-self: start;
-    color: var(--accent-strong);
-    font-weight: 800;
-    text-decoration: none;
-  }
-
-  @media (max-width: 820px) {
-    .download-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .download-card {
-      flex-direction: column;
-    }
-  }
+  .page-hero { background: linear-gradient(135deg, #ffffff, #f2f8ee); }
+  .eyebrow { color: var(--accent-strong); font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: 16px 0 20px; font-size: clamp(44px, 7vw, 76px); }
+  .intro, .download-card p { color: var(--muted); }
+  .download-list { display: grid; gap: 42px; }
+  .download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .download-card { display: flex; justify-content: space-between; gap: 24px; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+  .download-card span { display: inline-flex; padding: 6px 11px; border-radius: 999px; background: #eef7e8; color: var(--accent-strong); font-size: .82rem; font-weight: 900; }
+  .download-card a { align-self: start; white-space: nowrap; color: var(--accent-strong); font-weight: 900; }
+  @media (max-width: 800px) { .download-grid { grid-template-columns: 1fr; } .download-card { flex-direction: column; } }
 </style>

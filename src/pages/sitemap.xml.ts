@@ -2,7 +2,7 @@
 import { footballTeams } from "../data/footballTeams";
 
 export async function GET() {
-  const siteUrl = "https://younesbouqoro.github.io/psv-duesseldorf-website";
+  const siteUrl = new URL(import.meta.env.BASE_URL, "https://younesbouqoro.github.io");
 
   const staticPages = [
     "",
@@ -13,6 +13,7 @@ export async function GET() {
     "probetraining",
     "mitglied-werden",
     "downloads",
+    "kurse",
     "partner",
     "sponsoring",
     "kinderschutz",
@@ -24,9 +25,9 @@ export async function GET() {
   const sportarten = await getCollection("sportarten");
 
   const urls = [
-    ...staticPages.map((page) => `${siteUrl}/${page}`.replace(/\/$/, "")),
-    ...sportarten.map((sport) => `${siteUrl}/sportarten/${sport.id}`),
-    ...footballTeams.map((team) => `${siteUrl}/fussball/teams/${team.slug}`)
+    ...staticPages.map((page) => new URL(`${page}/`, siteUrl).toString()),
+    ...sportarten.map((sport) => new URL(`sportarten/${sport.id}/`, siteUrl).toString()),
+    ...footballTeams.map((team) => new URL(`fussball/teams/${team.slug}/`, siteUrl).toString())
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

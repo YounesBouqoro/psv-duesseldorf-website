@@ -1,28 +1,25 @@
-﻿---
-title: "FuÃŸball"
-shortDescription: "FuÃŸball beim PSV DÃ¼sseldorf â€“ Jugend, Senioren und Gemeinschaft auf dem Platz."
-category: "Ballsport"
+---
+title: "Fußball"
+shortDescription: "23 Mannschaften im Jugend- und Seniorenbereich auf der vereinseigenen Anlage in Grafenberg."
+category: "Mannschaftssport"
 featured: true
-targetGroups: ["Kinder", "Jugendliche", "Erwachsene"]
-tags: ["Team", "Jugend", "Senioren"]
+targetGroups: ["Kinder", "Jugendliche", "Erwachsene", "Ü32"]
+tags: ["Teamsport", "Jugend", "Senioren"]
 contact:
-  name: "Ansprechpartner folgt"
-  role: "Abteilungsleitung"
-training:
-  - groupName: "Trainingsgruppe"
-    weekday: "Wochentag folgt"
-    startTime: "00:00"
-    endTime: "00:00"
-    location: "SportstÃ¤tte folgt"
+  name: "Fußballabteilung"
+  role: "Spielanfragen und Probetraining"
+  email: "anfrage@polizei-sv-duesseldorf.de"
+training: []
+trialAvailability: "contact"
+trialNote: "Die Plätze sind begrenzt. Bitte Name, Geburtsdatum und bisherige Fußballerfahrung per E-Mail senden."
+sourceUrl: "https://polizei-sv-duesseldorf.de/fussball/"
+lastVerified: "2026-08-17"
 ---
 
-Hier entsteht die Abteilungsseite fÃ¼r **FuÃŸball**.
+Auf der vereinseigenen Sportanlage in Grafenberg trainieren 23 Fußballmannschaften von Montag bis Freitag. Zur Verfügung stehen ein großer Kunstrasenplatz und ein weiterer Kunstrasen-Halbfeldplatz.
 
-Die Inhalte werden im nÃ¤chsten Schritt mit den jeweiligen Abteilungen abgestimmt.
+Die Nachfrage im Kinder- und Jugendbereich ist hoch. Eine Anfrage ist möglich, ein Platz kann jedoch erst nach Rückmeldung der zuständigen Mannschaft zugesagt werden.
 
+Die veröffentlichten Jahresbeiträge betragen 150 Euro für Jugendliche und 170 Euro für Senioren.
 
-## Fußballbereich
-
-Für die Fußballabteilung gibt es einen eigenen Bereich mit Mannschaftsübersicht, Teamseiten und Probetrainingsprozess.
-
-[Zum Fußballbereich](/psv-duesseldorf-website/fussball/)
+[Mannschaften und Fußballbereich öffnen](/psv-duesseldorf-website/fussball/)
